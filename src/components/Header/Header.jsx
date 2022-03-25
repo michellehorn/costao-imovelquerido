@@ -1,12 +1,12 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import HeaderStyle from './styles';
 
 const Header = () => {
   return (
-    <header>
-      <h1>This is the header</h1>
+    <HeaderStyle>
+      <span>This is the header</span>
       <Link to="/login">Login</Link>
-    </header>
+    </HeaderStyle>
   );
 };
 

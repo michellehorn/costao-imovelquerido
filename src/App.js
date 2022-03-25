@@ -1,19 +1,26 @@
 import { Routes, Route } from "react-router-dom";
-import { Footer, Header, Sidebar } from "./components";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import { GlobalStyle } from "./styles";
+import { PrivateRoutes } from "./private-routes";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Sidebar />
+    <>
+      <GlobalStyle />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoutes>
+              {" "}
+              <Home />
+            </PrivateRoutes>
+          }
+        />
       </Routes>
-      <Footer />
-    </div>
+    </>
   );
 }
 
