@@ -12,7 +12,7 @@ const fontSize = {
   footNote: "12px",
 };
 const weight = {
-  regular: 200,
+  light: 200,
   semibold: 300,
   regular: 400,
   bold: 600,
