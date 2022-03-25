@@ -1,25 +1,30 @@
+import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import LoginPage from "./pages/LoginPage";
 import { GlobalStyle } from "./styles";
-import { PrivateRoutes } from "./private-routes";
+import UserContext, { UserContextProvider } from "./context/UserContext";
+import { LoggedLayout } from "./components/";
 
 function App() {
+  const { state } = useContext(UserContext);
+
   return (
     <>
       <GlobalStyle />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/"
-          element={
-            <PrivateRoutes>
-              {" "}
-              <Home />
-            </PrivateRoutes>
-          }
-        />
-      </Routes>
+      <UserContextProvider>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/"
+            element={
+              <LoggedLayout>
+                <Home />
+              </LoggedLayout>
+            }
+          />
+        </Routes>
+      </UserContextProvider>
     </>
   );
 }

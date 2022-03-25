@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
-import HeaderStyle from './styles';
+import { HeaderImage, HeaderStyle, ListIcon, ProfileIcon } from "./styles";
+import { FlexItem, LogoWhite } from "../../styles";
 
 const Header = () => {
   return (
-    <HeaderStyle>
-      <span>This is the header</span>
-      <Link to="/login">Login</Link>
-    </HeaderStyle>
+    <HeaderImage>
+      <HeaderStyle>
+        <FlexItem flex height="100%" width="100%" margin="auto">
+          <ListIcon />
+          <ProfileIcon />
+          <LogoWhite flex margin="auto" width="140px" height="140px" />
+        </FlexItem>
+      </HeaderStyle>
+    </HeaderImage>
   );
 };
 
