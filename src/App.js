@@ -5,9 +5,11 @@ import LoginPage from "./pages/LoginPage";
 import { GlobalStyle } from "./styles";
 import UserContext, { UserContextProvider } from "./context/UserContext";
 import { LoggedLayout } from "./components/";
+import "./index.css";
 
 function App() {
   const { state } = useContext(UserContext);
+  console.log(state);
 
   return (
     <>

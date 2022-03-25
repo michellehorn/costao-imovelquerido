@@ -4,9 +4,14 @@ import logoWhiteImg from "./assets/costao_logo_branca.svg";
 import { colors, fontSize, weight } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
+    html {
+      margin: 0!important;
+      padding: 0!important;
+    }
     body {
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap');
-      margin: 0 !important;
+      margin: 0!important;
+      padding: 0!important;
       font-family: 'Montserrat', sans-serif;
     }
   `;
