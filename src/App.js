@@ -7,7 +7,7 @@ import { GlobalStyle } from "./styles";
 import UserContext, { UserContextProvider } from "./context/UserContext";
 import { LoggedLayout } from "./components/";
 import "./index.css";
-import GenerateBill from "./pages/GenerateBill/GenerateBill";
+import Documents from "./pages/Documents";
 
 function App() {
   const { state } = useContext(UserContext);
@@ -47,7 +47,31 @@ function App() {
             path="/generate-bill"
             element={
               <LoggedLayout>
-                <GenerateBill />
+                <Documents type="bill" />
+              </LoggedLayout>
+            }
+          />
+          <Route
+            path="/loc-docs"
+            element={
+              <LoggedLayout>
+                <Documents type="loc" />
+              </LoggedLayout>
+            }
+          />
+          <Route
+            path="/cond-docs"
+            element={
+              <LoggedLayout>
+                <Documents type="cond" />
+              </LoggedLayout>
+            }
+          />
+          <Route
+            path="/statement"
+            element={
+              <LoggedLayout>
+                <Documents type="statement" />
               </LoggedLayout>
             }
           />

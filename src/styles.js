@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
+import iconPdfImage from "./assets/icon_pdf.svg";
 import logoWhiteImg from "./assets/Branco_Vertical.png";
 import LogoYellowBlueImg from "./assets/Amarelo_Azul.png";
 import { colors, fontSize, weight } from "./theme";
@@ -58,6 +59,15 @@ const FlexItem = styled.div`
   display: ${(props) => (props.flex ? "flex" : "block")};
 `;
 
+const PdfIcon = styled.div`
+  display: flex;
+  width: ${(props) => props.width || '20px'};
+  height: ${(props) => props.height || '20px'};
+  background-image: url(${iconPdfImage});
+  background-size: contain;
+  margin-left: 10px;
+`;
+
 const Input = styled.input`
   background: transparent;
   background-color: transparent;
@@ -83,14 +93,15 @@ const Link = styled.a`
 `;
 
 const LinkItem = styled.span`
-  color: ${colors.secondary};
-  display: block;
-  padding-top: 15px;
+  color: ${(props) => props.color || colors.secondary};
+  display: ${props => props.flex ? 'flex' : 'block'};
+  padding-top: ${(props) => props.pt || "15px"};
   text-decoration: underline;
   font-family: "Montserrat", sans-serif;
   font-size: ${fontSize.text};
   font-weight: ${weight.regular};
   text-align: right;
+  cursor: ${(props) => (props.hasCursor ? "pointer" : "")};
 `;
 
 const LogoWhite = styled.div`
@@ -123,7 +134,7 @@ const Table = styled.table`
   height: ${(props) => props.height || "100%"};
   background-color: transparent;
   border-spacing: 0 1em;
-  `;
+`;
 
 const TableBody = styled.tbody`
   background: transparent;
@@ -132,7 +143,9 @@ const TableBody = styled.tbody`
 
 const TableBodyItem = styled.td`
   color: ${colors.darkGray};
-  width: ${props => props.width};
+  width: ${(props) => props.width};
+  border-bottom: ${props => props.border ? `1px solid ${colors.gray}` : 'none'};
+  padding-bottom: ${props => props.border && '5px'};
 `;
 
 const TableHeader = styled.thead`
@@ -140,7 +153,7 @@ const TableHeader = styled.thead`
 `;
 
 const TableHeaderItem = styled.th`
-  width: ${props => props.width};
+  width: ${(props) => props.width};
   color: ${colors.darkGray};
   font-weight: ${weight.bold};
 `;
@@ -181,6 +194,7 @@ export {
   LinkItem,
   LogoWhite,
   LogoYellowBlue,
+  PdfIcon,
   SectionTitle,
   Table,
   TableBody,
