@@ -9,6 +9,7 @@ const fontSize = {
   titleSection: "30px",
   label: "20px",
   text: "16px",
+  subtext: "14px",
   footNote: "12px",
 };
 const weight = {

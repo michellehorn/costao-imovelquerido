@@ -22,4 +22,9 @@ const SidebarArea = styled.aside`
   transition: transform 0.3s ease-in-out;
 `;
 
-export { SidebarArea, SidebarContainer };
+const SidebarItemsArea = styled.div`
+    padding: 20px 12px;
+`
+
+
+export { SidebarArea, SidebarContainer, SidebarItemsArea };

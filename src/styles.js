@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 import logoWhiteImg from "./assets/Branco_Vertical.png";
+import LogoYellowBlueImg from "./assets/Amarelo_Azul.png";
 import { colors, fontSize, weight } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
@@ -35,6 +36,13 @@ const Divider = styled.div`
   height: 447px;
 `;
 
+const DividerHorizontal = styled.div`
+  border-bottom: 1px solid ${colors.gray};
+  width: 238px;
+  margin: auto;
+  padding: ${props => props.padding};
+`
+
 const FlexItem = styled.div`
   width: ${(props) => props.width};
   margin: ${(props) => props.margin};
@@ -57,6 +65,15 @@ const Input = styled.input`
   }
 `;
 
+const Link = styled.a`
+  color: ${colors.primary};
+  cursor: pointer;
+  display: block;
+  font-weight: ${weight.bold};
+  padding: ${props => props.pl};
+  text-decoration: ${props => props.decoration};
+`;
+
 const LinkItem = styled.span`
   color: ${colors.secondary};
   display: block;
@@ -75,14 +92,15 @@ const LogoWhite = styled.div`
   background-size: contain;
   margin: ${(props) => props.margin};
   justify-content: "center";
-  &::after {
-    border: none;
-    outline: none;
-  }
-  &::before {
-    border: none;
-    outline: none;
-  }
+`;
+
+const LogoYellowBlue = styled.div`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  background: transparent url(${LogoYellowBlueImg}) no-repeat;
+  background-size: contain;
+  margin: ${(props) => props.margin};
+  justify-content: "center";
 `;
 
 const SectionTitle = styled.h1`
@@ -98,6 +116,7 @@ const Text = styled.label`
   display: ${(props) => (props.inline ? "inline" : "block")};
   text-align: left;
   margin-top: 20px;
+  margin-bottom: ${(props) => props.mb};
 `;
 
 const Title = styled.h1`
@@ -112,11 +131,14 @@ export {
   GlobalStyle,
   ButtonSubmit,
   Divider,
+  DividerHorizontal,
   FlexItem,
   Input,
   Text,
+  Link,
   LinkItem,
   LogoWhite,
+  LogoYellowBlue,
   SectionTitle,
   Title,
 };
