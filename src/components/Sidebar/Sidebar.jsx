@@ -8,7 +8,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     {
       section: "Condomínio",
       subitems: [
-        { text: "Emitir 2ª via de boleto", link: "/invoice" },
+        { text: "Emitir 2ª via de boleto", link: "/generate-bill" },
         { text: "Documentos", link: "/cond-docs" },
       ],
     },

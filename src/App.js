@@ -7,6 +7,7 @@ import { GlobalStyle } from "./styles";
 import UserContext, { UserContextProvider } from "./context/UserContext";
 import { LoggedLayout } from "./components/";
 import "./index.css";
+import GenerateBill from "./pages/GenerateBill/GenerateBill";
 
 function App() {
   const { state } = useContext(UserContext);
@@ -39,6 +40,14 @@ function App() {
             element={
               <LoggedLayout>
                 <PasswordReset />
+              </LoggedLayout>
+            }
+          />
+          <Route
+            path="/generate-bill"
+            element={
+              <LoggedLayout>
+                <GenerateBill />
               </LoggedLayout>
             }
           />

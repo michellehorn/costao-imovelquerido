@@ -118,6 +118,38 @@ const SectionTitle = styled.h1`
   font-weight: ${(props) => props.weight};
 `;
 
+const Table = styled.table`
+  width: 100%;
+  height: ${(props) => props.height || "100%"};
+  background-color: transparent;
+  border-spacing: 0 1em;
+  `;
+
+const TableBody = styled.tbody`
+  background: transparent;
+  text-align: left;
+`;
+
+const TableBodyItem = styled.td`
+  color: ${colors.darkGray};
+  width: ${props => props.width};
+`;
+
+const TableHeader = styled.thead`
+  text-align: left;
+`;
+
+const TableHeaderItem = styled.th`
+  width: ${props => props.width};
+  color: ${colors.darkGray};
+  font-weight: ${weight.bold};
+`;
+
+const TableRow = styled.tr`
+  width: 100px;
+  margin-top: 40px;
+`;
+
 const Text = styled.label`
   color: ${(props) => props.color};
   font-size: ${(props) => props.size || fontSize.text};
@@ -126,7 +158,7 @@ const Text = styled.label`
   text-align: ${(props) => props.textAlign || "left"};
   margin-top: 20px;
   margin-bottom: ${(props) => props.mb};
-  padding: ${props => props.padding};
+  padding: ${(props) => props.padding};
 `;
 
 const Title = styled.h1`
@@ -145,11 +177,17 @@ export {
   DividerHorizontal,
   FlexItem,
   Input,
-  Text,
   Link,
   LinkItem,
   LogoWhite,
   LogoYellowBlue,
   SectionTitle,
+  Table,
+  TableBody,
+  TableBodyItem,
+  TableHeader,
+  TableHeaderItem,
+  TableRow,
+  Text,
   Title,
 };

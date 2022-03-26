@@ -3,6 +3,7 @@ const colors = {
   primary: "#13395C",
   secondary: "#FBB016",
   gray: "#EEEEEE",
+  darkGray: "#444",
 };
 const fontSize = {
   title: "40px",
@@ -16,6 +17,7 @@ const weight = {
   light: 200,
   semibold: 300,
   regular: 400,
+  medium: 500,
   bold: 600,
 };
 
