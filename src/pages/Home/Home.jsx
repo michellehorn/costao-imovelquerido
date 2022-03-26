@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Announcements from "../Announcements";
 import { AlertSection } from "./styles";
 import { Text } from "../../styles";
 import { colors, fontSize, weight } from "../../theme";
@@ -24,7 +25,9 @@ const Home = () => {
       >
         {state.name}.
       </Text>
-      <AlertSection />
+      <AlertSection>
+        <Announcements />
+      </AlertSection>
     </>
   );
 };

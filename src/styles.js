@@ -17,15 +17,18 @@ const GlobalStyle = createGlobalStyle`
     }
   `;
 
-
 const Aligner = styled.div`
-  text-align: ${props => props.direction};
-`
+  text-align: ${(props) => props.direction};
+  width: 100%;
+  display: ${(props) => (props.flex ? "flex" : "")};
+  justify-content: ${(props) => (props.flex ? "center" : "")};
+  align-items: ${(props) => (props.flex ? "center" : "")};
+`;
 
 const ButtonSubmit = styled.button`
   background-color: ${colors.secondary};
   color: ${colors.primary};
-  height: ${props => props.height || '48px'};
+  height: ${(props) => props.height || "48px"};
   padding: 14px 32px;
   border: none;
   font-size: ${fontSize.text};
@@ -45,8 +48,8 @@ const DividerHorizontal = styled.div`
   border-bottom: 1px solid ${colors.gray};
   width: 238px;
   margin: auto;
-  padding: ${props => props.padding};
-`
+  padding: ${(props) => props.padding};
+`;
 
 const FlexItem = styled.div`
   width: ${(props) => props.width};
@@ -59,11 +62,11 @@ const Input = styled.input`
   background: transparent;
   background-color: transparent;
   border: none;
-  border-bottom: 3px solid ${props => props.color || 'white'};
+  border-bottom: 3px solid ${(props) => props.color || "white"};
   width: 400px;
-  color: ${props => props.color || colors.white};
+  color: ${(props) => props.color || colors.white};
   font-size: ${fontSize.text};
-  height: ${props => props.height || '48px'};
+  height: ${(props) => props.height || "48px"};
   display: ${(props) => (props.isFlex ? "flex" : "")};
   &:focus {
     outline: none;
@@ -75,8 +78,8 @@ const Link = styled.a`
   cursor: pointer;
   display: block;
   font-weight: ${weight.bold};
-  padding: ${props => props.pl};
-  text-decoration: ${props => props.decoration};
+  padding: ${(props) => props.pl};
+  text-decoration: ${(props) => props.decoration};
 `;
 
 const LinkItem = styled.span`
@@ -120,9 +123,10 @@ const Text = styled.label`
   font-size: ${(props) => props.size || fontSize.text};
   font-weight: ${(props) => props.weight};
   display: ${(props) => (props.inline ? "inline" : "block")};
-  text-align: left;
+  text-align: ${(props) => props.textAlign || "left"};
   margin-top: 20px;
   margin-bottom: ${(props) => props.mb};
+  padding: ${props => props.padding};
 `;
 
 const Title = styled.h1`
