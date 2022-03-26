@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import PasswordReset from "./pages/PasswordReset";
 import LoginPage from "./pages/LoginPage";
 import { GlobalStyle } from "./styles";
 import UserContext, { UserContextProvider } from "./context/UserContext";
@@ -22,6 +23,22 @@ function App() {
             element={
               <LoggedLayout>
                 <Home />
+              </LoggedLayout>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <LoggedLayout>
+                <Home />
+              </LoggedLayout>
+            }
+          />
+          <Route
+            path="/forgot-password"
+            element={
+              <LoggedLayout>
+                <PasswordReset />
               </LoggedLayout>
             }
           />

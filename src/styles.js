@@ -17,10 +17,15 @@ const GlobalStyle = createGlobalStyle`
     }
   `;
 
+
+const Aligner = styled.div`
+  text-align: ${props => props.direction};
+`
+
 const ButtonSubmit = styled.button`
   background-color: ${colors.secondary};
   color: ${colors.primary};
-  height: 48px;
+  height: ${props => props.height || '48px'};
   padding: 14px 32px;
   border: none;
   font-size: ${fontSize.text};
@@ -54,11 +59,11 @@ const Input = styled.input`
   background: transparent;
   background-color: transparent;
   border: none;
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid ${props => props.color || 'white'};
   width: 400px;
-  color: ${colors.white};
+  color: ${props => props.color || colors.white};
   font-size: ${fontSize.text};
-  height: 48px;
+  height: ${props => props.height || '48px'};
   display: ${(props) => (props.isFlex ? "flex" : "")};
   &:focus {
     outline: none;
@@ -101,6 +106,7 @@ const LogoYellowBlue = styled.div`
   background-size: contain;
   margin: ${(props) => props.margin};
   justify-content: "center";
+  cursor: pointer;
 `;
 
 const SectionTitle = styled.h1`
@@ -129,6 +135,7 @@ const Title = styled.h1`
 
 export {
   GlobalStyle,
+  Aligner,
   ButtonSubmit,
   Divider,
   DividerHorizontal,

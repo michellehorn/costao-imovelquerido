@@ -10,7 +10,7 @@ const HeaderStyle = styled.header`
     rgba(19, 57, 92, 0.87)
   );
   width: 100vw;
-  height: 250px;
+  height: 200px;
 `;
 
 const HeaderImage = styled.div`

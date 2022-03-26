@@ -1,3 +1,4 @@
+import { Link as LinkRouter } from "react-router-dom";
 import { SidebarArea, SidebarContainer, SidebarItemsArea } from "./styles";
 import { DividerHorizontal, Link, LogoYellowBlue, Text } from "../../styles";
 import { colors, weight, fontSize } from "../../theme";
@@ -23,7 +24,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     <>
       <SidebarContainer sidebarOpen={isOpen} onClick={() => toggleSidebar()} />
       <SidebarArea open={isOpen}>
-        <LogoYellowBlue width="130px" height="130px" margin="50px auto" />
+        <LinkRouter to="/">
+          <LogoYellowBlue width="130px" height="130px" margin="50px auto" />
+        </LinkRouter>
         <SidebarItemsArea>
           {items.map((item, indIt) => (
             <>
@@ -41,12 +44,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                   decoration="none"
                   pl="5px"
                   href={subItem.link}
-                  key={indSub}
+                  key={`sub-${indSub}`}
                 >
                   {subItem.text}
                 </Link>
               ))}
-              <DividerHorizontal padding="30px 0 0" />
+              <DividerHorizontal key={`div-${indIt}`} padding="30px 0 0" />
             </>
           ))}
         </SidebarItemsArea>
