@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-import logoWhiteImg from "./assets/costao_logo_branca.svg";
+import logoWhiteImg from "./assets/Branco_Vertical.png";
 import { colors, fontSize, weight } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
@@ -68,13 +68,21 @@ const LinkItem = styled.span`
   text-align: right;
 `;
 
-const LogoWhite = styled.img`
+const LogoWhite = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  background: url(${logoWhiteImg}) no-repeat;
+  background: transparent url(${logoWhiteImg}) no-repeat;
   background-size: contain;
   margin: ${(props) => props.margin};
   justify-content: "center";
+  &::after {
+    border: none;
+    outline: none;
+  }
+  &::before {
+    border: none;
+    outline: none;
+  }
 `;
 
 const SectionTitle = styled.h1`

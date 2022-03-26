@@ -31,8 +31,8 @@ const LoginPage = () => {
   return (
     <BackgroundCover>
       <Background>
-        <FlexItem width="503px">
-          <LogoWhite width="220px" height="225px" />
+        <FlexItem width="503px" flex>
+          <LogoWhite width="220px" height="225px" margin="auto" />
         </FlexItem>
         <FlexItem width="fit-content">
           <Divider />
