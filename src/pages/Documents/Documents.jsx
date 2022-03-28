@@ -20,7 +20,7 @@ function Documents({ type }) {
   const token = localStorage.getItem("token");
 
   const downloadFile = (file) => {
-    window.open(file);
+    window.open(`http://187.33.21.33:3510${file}`);
   };
 
   const handleTitle = (type) =>
