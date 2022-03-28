@@ -9,6 +9,7 @@ import { LoggedLayout } from "./components/";
 import "./index.css";
 import Documents from "./pages/Documents";
 import Statement from "./pages/Statement/Statement";
+import GenerateBill from "./pages/GenerateBill";
 
 function App() {
   const { state } = useContext(UserContext);
@@ -50,14 +51,14 @@ function App() {
               </LoggedLayout>
             }
           />
-          {/* <Route
+          <Route
             path="/generate-bill"
             element={
               <LoggedLayout>
-                <Documents type="bill" />
+                <GenerateBill type="bill" />
               </LoggedLayout>
             }
-          /> */}
+          />
           <Route
             path="/loc-docs"
             element={

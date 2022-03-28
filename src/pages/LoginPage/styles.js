@@ -11,6 +11,10 @@ const Background = styled.main`
   display: flex;
   align-items: center;
   text-align: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    position: relative;
+  }
 `;
 
 const BackgroundCover = styled.div`

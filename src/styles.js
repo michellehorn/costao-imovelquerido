@@ -43,6 +43,9 @@ const ButtonSubmit = styled.button`
 const Divider = styled.div`
   border-right: 6px solid white;
   height: 447px;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const DividerHorizontal = styled.div`
@@ -57,6 +60,10 @@ const FlexItem = styled.div`
   margin: ${(props) => props.margin};
   height: ${(props) => props.height};
   display: ${(props) => (props.flex ? "flex" : "block")};
+  @media (max-width: 500px) {
+    width: ${({ mWidth }) => mWidth};
+    margin: ${({ mMargin }) => mMargin};
+  }
 `;
 
 const PdfIcon = styled.div`
@@ -73,13 +80,16 @@ const Input = styled.input`
   background-color: transparent;
   border: none;
   border-bottom: 3px solid ${(props) => props.color || "white"};
-  width: ${({width}) => width || '400px'};
+  width: ${({ width }) => width || "400px"};
   color: ${(props) => props.color || colors.white};
   font-size: ${fontSize.text};
   height: ${(props) => props.height || "48px"};
   display: ${(props) => (props.isFlex ? "flex" : "")};
   &:focus {
     outline: none;
+  }
+  @media (max-width: 500px) {
+    width: 300px;
   }
 `;
 
@@ -111,6 +121,9 @@ const LogoWhite = styled.div`
   background-size: contain;
   margin: ${(props) => props.margin};
   justify-content: "center";
+  @media (max-width: 500px) {
+    margin: 30px auto 0;
+  }
 `;
 
 const LogoYellowBlue = styled.div`
@@ -143,8 +156,8 @@ const TableBody = styled.tbody`
   background: transparent;
   text-align: left;
   display: block;
-  overflow-y: ${({scroll}) => scroll && 'auto'};
-  height: ${({height}) => height || '200px'};
+  overflow-y: ${({ scroll }) => scroll && "auto"};
+  height: ${({ height }) => height || "200px"};
   padding: ${({ padding }) => padding};
 `;
 
@@ -189,6 +202,10 @@ const Title = styled.h1`
   margin-bottom: ${(props) => props.mb || "64px"};
   font-weight: ${(props) => props.weight};
   text-align: ${(props) => props.align};
+  @media (max-width: 500px) {
+    font-size: ${fontSize.label};
+    text-align: center;
+  }
 `;
 
 export {

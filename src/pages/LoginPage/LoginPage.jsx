@@ -61,13 +61,13 @@ const LoginPage = () => {
     <BackgroundCover>
       {alertOpen && <Alert message={alertMessage} type={alertType} />}
       <Background>
-        <FlexItem width="503px" flex>
+        <FlexItem mWidth="100%" width="503px" flex>
           <LogoWhite width="220px" height="225px" margin="auto" />
         </FlexItem>
         <FlexItem width="fit-content">
           <Divider />
         </FlexItem>
-        <FlexItem margin="0 0 0 56px">
+        <FlexItem margin="0 0 0 56px" mMargin="0px">
           <form onSubmit={handleSubmit}>
             <Title color={colors.white} align="left" weight={weight.bold}>
               Acesso proprietário
