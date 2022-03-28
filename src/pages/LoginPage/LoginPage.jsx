@@ -19,7 +19,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState();
-  const [alertMessage, setAlertMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState("");
 
   const handleSubmit = (e) => {
     const formData = new FormData(e.currentTarget);
@@ -39,15 +39,24 @@ const LoginPage = () => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("name", res.data.nome);
         localStorage.setItem("email", res.data.email);
-        navigate("/");
+        localStorage.setItem("just_logged", true);
+        const { novaSenha } = res.data;
+
         setAlertType("success");
-        setAlertMessage("Login efetuado com sucesso");
         setAlertOpen(true);
+
+        if (novaSenha) {
+          navigate("/change-password");
+          setAlertMessage("Login efetuado com sucesso. Agora mude sua senha!");
+        } else {
+          navigate("/");
+          setAlertMessage("Login efetuado com sucesso");
+        }
         setTimeout(() => {
           setAlertOpen(false);
         }, 3000);
       })
-      .catch((error) => {
+      .catch(() => {
         setAlertType("error");
         setAlertMessage("Login ou senha incorretos. Tente novamente");
         setAlertOpen(true);
@@ -56,6 +65,8 @@ const LoginPage = () => {
         }, 3000);
       });
   };
+
+  const goTo = (where) => navigate(where);
 
   return (
     <BackgroundCover>
@@ -81,7 +92,9 @@ const LoginPage = () => {
             </Text>
             <Input name="password" type="password" isFlex />
             <Link to="/forgot-password">
-              <LinkItem>Esqueci minha senha</LinkItem>
+              <LinkItem onClick={goTo("/forgot-password")}>
+                Esqueci minha senha
+              </LinkItem>
             </Link>
             <ButtonSubmit type="submit">Entrar</ButtonSubmit>
           </form>

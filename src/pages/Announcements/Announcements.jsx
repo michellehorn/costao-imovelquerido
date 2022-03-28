@@ -55,13 +55,13 @@ const Announcements = () => {
             <TableBody padding="0 30px">
               {data.map((itemB, indB) => (
                 <TableRow key={`row-${indB}`}>
-                  <TableBodyItem width="150px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="150px" border key={`body-${indB}-d`}>
                     {itemB.Data}
                   </TableBodyItem>
-                  <TableBodyItem  width="200px" border key={`body-${indB}-m`}>
+                  <TableBodyItem  width="200px" border key={`body-${indB}-t`}>
                     {itemB.Titulo}
                   </TableBodyItem>
-                  <TableBodyItem width="200px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="200px" border key={`body-${indB}-a`}>
                     {itemB.Aviso}
                   </TableBodyItem>
                 </TableRow>

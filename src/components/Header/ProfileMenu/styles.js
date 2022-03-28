@@ -26,4 +26,11 @@ const MenuItem = styled.a`
   cursor: pointer;
 `;
 
-export { Menu, MenuItem };
+const UserName = styled.h5`
+  color: white;
+  position: absolute;
+  right: 80px;
+  font-weight: ${weight.bold};
+`;
+
+export { Menu, MenuItem, UserName };

@@ -110,7 +110,7 @@ const LinkItem = styled.span`
   font-family: "Montserrat", sans-serif;
   font-size: ${fontSize.text};
   font-weight: ${weight.regular};
-  text-align: right;
+  text-align: ${({align}) => align || 'right'};
   cursor: ${(props) => (props.hasCursor ? "pointer" : "")};
 `;
 

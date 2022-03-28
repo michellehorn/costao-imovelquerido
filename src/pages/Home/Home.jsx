@@ -7,17 +7,22 @@ import { Alert } from "../../components";
 
 const Home = () => {
   const name = localStorage.getItem("name");
+  const justLogged = localStorage.getItem("just_logged");
+
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState();
-  const [alertMessage, setAlertMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
-    setAlertType("success");
-    setAlertMessage("Login efetuado com sucesso");
-    setAlertOpen(true);
-    setTimeout(() => {
-      setAlertOpen(false);
-    }, 3000);
+    if (justLogged) {
+      setAlertType("success");
+      setAlertMessage("Login efetuado com sucesso");
+      setAlertOpen(true);
+      setTimeout(() => {
+        setAlertOpen(false);
+      }, 3000);
+      localStorage.removeItem("just_logged");
+    }
   }, []);
 
   return (
