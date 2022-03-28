@@ -12,13 +12,13 @@ import Documents from "./pages/Documents";
 function App() {
   const { state } = useContext(UserContext);
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
-  }, [state, token]);
+  }, [state, token, navigate]);
   return (
     <>
       <GlobalStyle />

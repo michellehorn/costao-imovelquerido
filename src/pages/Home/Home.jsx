@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import Announcements from "../Announcements";
 import { AlertSection } from "./styles";
 import { Text } from "../../styles";

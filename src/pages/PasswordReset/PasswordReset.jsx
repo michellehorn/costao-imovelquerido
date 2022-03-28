@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import {
   Aligner,
@@ -11,7 +10,6 @@ import {
 import { colors, weight } from "../../theme";
 
 const PasswordReset = () => {
-  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
 
