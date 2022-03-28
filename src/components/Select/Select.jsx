@@ -11,6 +11,7 @@ const Select = ({ items, onChange }) => {
           {item.descricao}
         </OptionsInput>
       ))}
+      <OptionsInput value="0">Todos</OptionsInput>
     </SelectInput>
   );
 };
