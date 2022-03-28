@@ -23,7 +23,7 @@ const Home = () => {
       }, 3000);
       localStorage.removeItem("just_logged");
     }
-  }, []);
+  }, [justLogged]);
 
   return (
     <>

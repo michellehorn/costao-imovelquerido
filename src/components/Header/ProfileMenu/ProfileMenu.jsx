@@ -20,9 +20,7 @@ function ProfileMenu() {
       })
       .then((res) => {
         const aux = [];
-        res.data.map((item) => {
-          aux.push(item.descricao);
-        });
+        res.data.map((item) => aux.push(item.descricao));
         setUhs(aux);
       });
   };
@@ -37,6 +35,7 @@ function ProfileMenu() {
     localStorage.removeItem("email");
     navigate("/login");
   };
+
   return (
     <>
       <ProfileIcon onClick={() => setOpen(!open)} />
