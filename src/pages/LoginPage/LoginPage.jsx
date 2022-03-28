@@ -10,12 +10,11 @@ import {
 } from "../../styles";
 import { Background, BackgroundCover } from "./styles";
 import { colors, weight } from "../../theme";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import UserContext from "../../context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
 
 const LoginPage = () => {
-  const { setState } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     const formData = new FormData(e.currentTarget);
@@ -24,8 +23,21 @@ const LoginPage = () => {
     for (let [key, value] of formData.entries()) {
       obj[key] = value;
     }
-    setState({ ...obj });
-    window.location.href = "/";
+    const { email, password } = obj;
+
+    api
+      .post("/login", {
+        login: email,
+        senha: password,
+      })
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("name", res.data.nome);
+        localStorage.setItem("email", res.data.email);
+      })
+      .then(() => {
+        navigate("/");
+      });
   };
 
   return (

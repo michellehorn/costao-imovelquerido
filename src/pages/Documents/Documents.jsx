@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 import { colors } from "../../theme";
+
 import {
   Aligner,
   FlexItem,
   LinkItem,
-  PdfIcon,
   SectionTitle,
   Table,
   TableBody,
@@ -14,86 +15,65 @@ import {
   TableRow,
 } from "../../styles";
 
-import { billItems, condItems, locItems, statementItems } from "./mockFile";
-
 function Documents({ type }) {
   const [data, setData] = useState(null);
-  const [hasBorder, setBorder] = useState(true);
-  console.log(type);
-  useEffect(() => {
-    switch (type) {
-      case "loc":
-        setData(locItems);
-        break;
-      case "cond":
-        setData(condItems);
-        break;
-      case "bill":
-        setData(billItems);
-        setBorder(false);
-        break;
-      case "statement":
-        setData(statementItems);
-        setBorder(false);
-        break;
-      default:
-        break;
-    }
-  }, [type]);
+  const token = localStorage.getItem("token");
 
   const downloadFile = (file) => {
     window.open(file);
   };
 
+  const handleTitle = (type) =>
+    ({ C: "Condominiais", L: "de Locação" }[type] || "");
+
+  const fetchDocs = (type, token) => {
+    api
+      .get(`/documento/${type}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setData(res.data);
+      });
+  };
+
+  useEffect(() => {
+    fetchDocs(type, token);
+  }, [type, token]);
+
   if (!data) return null;
 
   return (
-    <FlexItem margin="auto" isFlex width="640px">
+    <FlexItem margin="auto" isFlex width="800px">
       <Aligner direction="center">
-        <SectionTitle>{data.title}</SectionTitle>
+        <SectionTitle>{`Documentos ${handleTitle(type)}`}</SectionTitle>
         <Table>
           <TableHeader>
             <TableRow>
-              {data.header.map((itemH, indH) => (
-                <TableHeaderItem width={itemH.size} key={`header-${indH}`}>
-                  {itemH.text}
-                </TableHeaderItem>
-              ))}
+              <TableHeaderItem width="200px">Criado em</TableHeaderItem>
+              <TableHeaderItem>Descrição</TableHeaderItem>
+              <TableHeaderItem> </TableHeaderItem>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {data.values.map((itemB, indB) => (
-              <TableRow>
-                <TableBodyItem border={hasBorder} key={`body-${indB}-m`}>
-                  {itemB.created_at || itemB.month}
+            {data.map((itemB, indB) => (
+              <TableRow key={`row-${indB}`}>
+                <TableBodyItem width="200px" border key={`body-${indB}-m`}>
+                  {itemB.data}
                 </TableBodyItem>
-
-                <TableBodyItem border={hasBorder} key={`body-${indB}-d`}>
-                  {itemB.description}
+                <TableBodyItem width="600px" border key={`body-${indB}-m`}>
+                  {itemB.nome}
                 </TableBodyItem>
-
-                {itemB.due_date && (
-                  <TableBodyItem border={hasBorder} key={`body-${indB}-d`}>
-                    {itemB.due_date}
-                  </TableBodyItem>
-                )}
-
-                <TableBodyItem border={hasBorder} key={`body-${indB}-l`}>
+                <TableBodyItem border key={`body-${indB}-m`}>
                   <LinkItem
-                    onClick={() => downloadFile(itemB.download_link)}
+                    onClick={() => downloadFile(itemB.arquivo)}
                     hasCursor
                     color={colors.primary}
                     pt="0"
                     flex
                   >
-                    {type === "bill" ? (
-                      <>Emitir 2ª via</>
-                    ) : (
-                      <>
-                        {" "}
-                        Imprimir <PdfIcon />
-                      </>
-                    )}
+                    Imprimir
                   </LinkItem>
                 </TableBodyItem>
               </TableRow>

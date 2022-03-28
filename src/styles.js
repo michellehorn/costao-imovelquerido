@@ -134,11 +134,16 @@ const Table = styled.table`
   height: ${(props) => props.height || "100%"};
   background-color: transparent;
   border-spacing: 0 1em;
+  max-height: 400px;
+  overflow-y: scroll;
 `;
 
 const TableBody = styled.tbody`
   background: transparent;
   text-align: left;
+  display: block;
+  overflow-y: scroll;
+  height: 200px;
 `;
 
 const TableBodyItem = styled.td`
@@ -150,6 +155,7 @@ const TableBodyItem = styled.td`
 
 const TableHeader = styled.thead`
   text-align: left;
+  display: block;
 `;
 
 const TableHeaderItem = styled.th`

@@ -2,9 +2,11 @@ import { createContext, useState } from "react";
 
 const DEFAULT_VALUE = {
   state: {
-    name: "Michelle Horn",
+    id: "",
+    name: "",
     email: "",
-    isLogged: "",
+    nova_senha: "",
+    token: ""
   },
   setState: () => {},
 };

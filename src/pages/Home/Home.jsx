@@ -3,10 +3,10 @@ import Announcements from "../Announcements";
 import { AlertSection } from "./styles";
 import { Text } from "../../styles";
 import { colors, fontSize, weight } from "../../theme";
-import UserContext from "../../context/UserContext";
 
 const Home = () => {
-  const { state } = useContext(UserContext);
+  const name = localStorage.getItem("name");
+
   return (
     <>
       <Text
@@ -23,7 +23,7 @@ const Home = () => {
         inline
         color={colors.secondary}
       >
-        {state.name}.
+        {name}.
       </Text>
       <AlertSection>
         <Announcements />

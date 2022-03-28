@@ -23,6 +23,7 @@ const MenuItem = styled.a`
   &:last-child {
     border-bottom: none;
   }
+  cursor: pointer;
 `;
 
 export { Menu, MenuItem };

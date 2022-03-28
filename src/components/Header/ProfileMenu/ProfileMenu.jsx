@@ -1,23 +1,29 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { ProfileIcon } from "../styles";
 import { Menu, MenuItem } from "./styles";
 
 function ProfileMenu() {
   const [open, setOpen] = useState(false);
-  const items = [
-    { text: "Redefinir senha", link: "/forgot-password" },
-    { text: "Sair", link: "/login" },
-  ];
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("name");
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    navigate("/ login");
+  };
   return (
     <>
       <ProfileIcon onClick={() => setOpen(!open)} />
       {open && (
         <Menu>
-          {items.map((item, index) => (
-            <MenuItem key={index} href={item.link}>
-              {item.text}
-            </MenuItem>
-          ))}
+          <MenuItem href="/forgot-password">
+            Redefinir senha
+          </MenuItem>
+          <MenuItem onClick={() => logout()}>
+            Sair
+          </MenuItem>
         </Menu>
       )}
     </>

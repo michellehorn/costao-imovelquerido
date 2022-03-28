@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import PasswordReset from "./pages/PasswordReset";
 import LoginPage from "./pages/LoginPage";
@@ -11,12 +11,18 @@ import Documents from "./pages/Documents";
 
 function App() {
   const { state } = useContext(UserContext);
-  console.log(state);
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [state, token]);
   return (
     <>
       <GlobalStyle />
-      <UserContextProvider>
+      <UserContextProvider value={{ ...state }}>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
@@ -43,19 +49,19 @@ function App() {
               </LoggedLayout>
             }
           />
-          <Route
+          {/* <Route
             path="/generate-bill"
             element={
               <LoggedLayout>
                 <Documents type="bill" />
               </LoggedLayout>
             }
-          />
+          /> */}
           <Route
             path="/loc-docs"
             element={
               <LoggedLayout>
-                <Documents type="loc" />
+                <Documents type="L" />
               </LoggedLayout>
             }
           />
@@ -63,18 +69,18 @@ function App() {
             path="/cond-docs"
             element={
               <LoggedLayout>
-                <Documents type="cond" />
+                <Documents type="C" />
               </LoggedLayout>
             }
           />
-          <Route
+          {/* <Route
             path="/statement"
             element={
               <LoggedLayout>
                 <Documents type="statement" />
               </LoggedLayout>
             }
-          />
+          /> */}
         </Routes>
       </UserContextProvider>
     </>

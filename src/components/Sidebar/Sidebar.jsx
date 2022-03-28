@@ -29,12 +29,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         </LinkRouter>
         <SidebarItemsArea>
           {items.map((item, indIt) => (
-            <>
+            <div key={`li-${indIt}`}>
               <Text
                 weight={weight.light}
                 size={fontSize.subtext}
                 color={colors.primary}
-                key={indIt}
+                key={`item-${indIt}`}
                 mb="15px"
               >
                 {item.section}
@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 </Link>
               ))}
               <DividerHorizontal key={`div-${indIt}`} padding="30px 0 0" />
-            </>
+            </div>
           ))}
         </SidebarItemsArea>
       </SidebarArea>
