@@ -73,7 +73,7 @@ const Input = styled.input`
   background-color: transparent;
   border: none;
   border-bottom: 3px solid ${(props) => props.color || "white"};
-  width: 400px;
+  width: ${({width}) => width || '400px'};
   color: ${(props) => props.color || colors.white};
   font-size: ${fontSize.text};
   height: ${(props) => props.height || "48px"};
@@ -143,8 +143,8 @@ const TableBody = styled.tbody`
   background: transparent;
   text-align: left;
   display: block;
-  overflow-y: scroll;
-  height: 200px;
+  overflow-y: ${({scroll}) => scroll && 'scroll'};
+  height: ${({height}) => height || '200px'};
   padding: ${({ padding }) => padding};
 `;
 

@@ -14,7 +14,6 @@ const LoggedLayout = ({ children }) => {
       />
       <Header onMenuClick={() => setSidebarOpen(!isSidebarOpen)} />
       <Container>{children}</Container>
-      <Footer />
     </>
   );
 };

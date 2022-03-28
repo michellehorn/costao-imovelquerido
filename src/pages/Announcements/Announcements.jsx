@@ -52,7 +52,7 @@ const Announcements = () => {
           </Text>
         ) : (
           <Table>
-            <TableBody padding="0 30px 40px">
+            <TableBody padding="0 30px">
               {data.map((itemB, indB) => (
                 <TableRow key={`row-${indB}`}>
                   <TableBodyItem width="150px" border key={`body-${indB}-m`}>

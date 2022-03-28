@@ -2,6 +2,7 @@ import styled from "styled-components";
 import resortImg from "../../assets/resort.jpeg";
 import iconPerson from "../../assets/icon_person.svg";
 import iconList from "../../assets/icon_list.svg";
+import { colors, fontSize, weight } from "../../theme";
 
 const HeaderStyle = styled.header`
   background: linear-gradient(
@@ -15,6 +16,14 @@ const HeaderStyle = styled.header`
 
 const HeaderImage = styled.div`
   background-image: url(${resortImg});
+`;
+
+const HeaderTitle = styled.h1`
+  color: ${colors.white};
+  font-size: ${fontSize.label};
+  margin: auto;
+  display: block;
+  font-weight: ${weight.bold};
 `;
 
 const ListIcon = styled.button`
@@ -41,4 +50,4 @@ const ProfileIcon = styled.button`
   border: none;
 `;
 
-export { HeaderImage, HeaderStyle, ListIcon, ProfileIcon };
+export { HeaderImage, HeaderStyle, HeaderTitle, ListIcon, ProfileIcon };

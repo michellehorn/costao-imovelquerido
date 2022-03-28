@@ -59,7 +59,7 @@ function Documents({ type }) {
                 <TableHeaderItem> </TableHeaderItem>
               </TableRow>
             </TableHeader>
-            <TableBody>
+            <TableBody scroll>
               {data.map((itemB, indB) => (
                 <TableRow key={`row-${indB}`}>
                   <TableBodyItem width="200px" border key={`body-${indB}-m`}>

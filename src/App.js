@@ -8,6 +8,7 @@ import UserContext, { UserContextProvider } from "./context/UserContext";
 import { LoggedLayout } from "./components/";
 import "./index.css";
 import Documents from "./pages/Documents";
+import Statement from "./pages/Statement/Statement";
 
 function App() {
   const { state } = useContext(UserContext);
@@ -73,14 +74,14 @@ function App() {
               </LoggedLayout>
             }
           />
-          {/* <Route
+          <Route
             path="/statement"
             element={
               <LoggedLayout>
-                <Documents type="statement" />
+                <Statement />
               </LoggedLayout>
             }
-          /> */}
+          />
         </Routes>
       </UserContextProvider>
     </>

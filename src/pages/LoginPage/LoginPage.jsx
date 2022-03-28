@@ -23,11 +23,11 @@ const LoginPage = () => {
     for (let [key, value] of formData.entries()) {
       obj[key] = value;
     }
-    const { email, password } = obj;
+    const { login, password } = obj;
 
     api
       .post("/login", {
-        login: email,
+        login: login,
         senha: password,
       })
       .then((res) => {
@@ -55,9 +55,9 @@ const LoginPage = () => {
               Acesso proprietário
             </Title>
             <Text color={colors.white} weight={weight.semibold}>
-              Seu e-mail*
+              Seu login*
             </Text>
-            <Input name="email" isFlex />
+            <Input name="login" isFlex />
             <Text color={colors.white} weight={weight.semibold}>
               Senha*
             </Text>
