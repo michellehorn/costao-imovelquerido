@@ -61,8 +61,8 @@ const FlexItem = styled.div`
 
 const PdfIcon = styled.div`
   display: flex;
-  width: ${(props) => props.width || '20px'};
-  height: ${(props) => props.height || '20px'};
+  width: ${(props) => props.width || "20px"};
+  height: ${(props) => props.height || "20px"};
   background-image: url(${iconPdfImage});
   background-size: contain;
   margin-left: 10px;
@@ -94,7 +94,7 @@ const Link = styled.a`
 
 const LinkItem = styled.span`
   color: ${(props) => props.color || colors.secondary};
-  display: ${props => props.flex ? 'flex' : 'block'};
+  display: ${(props) => (props.flex ? "flex" : "block")};
   padding-top: ${(props) => props.pt || "15px"};
   text-decoration: underline;
   font-family: "Montserrat", sans-serif;
@@ -127,6 +127,7 @@ const SectionTitle = styled.h1`
   color: ${(props) => props.color};
   font-size: ${fontSize.titleSection};
   font-weight: ${(props) => props.weight};
+  margin-top: ${({ mt }) => mt};
 `;
 
 const Table = styled.table`
@@ -144,13 +145,15 @@ const TableBody = styled.tbody`
   display: block;
   overflow-y: scroll;
   height: 200px;
+  padding: ${({ padding }) => padding};
 `;
 
 const TableBodyItem = styled.td`
   color: ${colors.darkGray};
   width: ${(props) => props.width};
-  border-bottom: ${props => props.border ? `1px solid ${colors.gray}` : 'none'};
-  padding-bottom: ${props => props.border && '5px'};
+  border-bottom: ${(props) =>
+    props.border ? `1px solid ${colors.gray}` : "none"};
+  padding-bottom: ${(props) => props.border && "5px"};
 `;
 
 const TableHeader = styled.thead`

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { colors } from "../../theme";
+import { colors, weight } from "../../theme";
 
 import {
   Aligner,
@@ -42,44 +42,48 @@ function Documents({ type }) {
     fetchDocs(type, token);
   }, [type, token]);
 
-  if (!data) return null;
-
   return (
     <FlexItem margin="auto" isFlex width="800px">
       <Aligner direction="center">
         <SectionTitle>{`Documentos ${handleTitle(type)}`}</SectionTitle>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHeaderItem width="200px">Criado em</TableHeaderItem>
-              <TableHeaderItem>Descrição</TableHeaderItem>
-              <TableHeaderItem> </TableHeaderItem>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {data.map((itemB, indB) => (
-              <TableRow key={`row-${indB}`}>
-                <TableBodyItem width="200px" border key={`body-${indB}-m`}>
-                  {itemB.data}
-                </TableBodyItem>
-                <TableBodyItem width="600px" border key={`body-${indB}-m`}>
-                  {itemB.nome}
-                </TableBodyItem>
-                <TableBodyItem border key={`body-${indB}-m`}>
-                  <LinkItem
-                    onClick={() => downloadFile(itemB.arquivo)}
-                    hasCursor
-                    color={colors.primary}
-                    pt="0"
-                    flex
-                  >
-                    Imprimir
-                  </LinkItem>
-                </TableBodyItem>
+        {!data ? (
+          <SectionTitle mt="40px" weight={weight.light} color={colors.primary}>
+            Não existem documentos para serem mostrados.
+          </SectionTitle>
+        ) : (
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderItem width="200px">Criado em</TableHeaderItem>
+                <TableHeaderItem>Descrição</TableHeaderItem>
+                <TableHeaderItem> </TableHeaderItem>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {data.map((itemB, indB) => (
+                <TableRow key={`row-${indB}`}>
+                  <TableBodyItem width="200px" border key={`body-${indB}-m`}>
+                    {itemB.data}
+                  </TableBodyItem>
+                  <TableBodyItem width="600px" border key={`body-${indB}-m`}>
+                    {itemB.nome}
+                  </TableBodyItem>
+                  <TableBodyItem border key={`body-${indB}-m`}>
+                    <LinkItem
+                      onClick={() => downloadFile(itemB.arquivo)}
+                      hasCursor
+                      color={colors.primary}
+                      pt="0"
+                      flex
+                    >
+                      Imprimir
+                    </LinkItem>
+                  </TableBodyItem>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
       </Aligner>
     </FlexItem>
   );
