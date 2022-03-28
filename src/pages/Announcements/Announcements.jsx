@@ -1,12 +1,9 @@
 import { WarningIcon } from "./styles";
 import {
   Aligner,
-  LinkItem,
   Table,
   TableBody,
   TableBodyItem,
-  TableHeader,
-  TableHeaderItem,
   TableRow,
   Text
 } from "../../styles";
