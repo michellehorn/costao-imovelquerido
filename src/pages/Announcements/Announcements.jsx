@@ -29,7 +29,6 @@ const Announcements = () => {
 
   useEffect(() => {
     fetchAlerts(token);
-    console.log(data);
   }, [token]);
 
   return (
