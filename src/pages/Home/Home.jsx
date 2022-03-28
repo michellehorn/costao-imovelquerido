@@ -2,12 +2,27 @@ import Announcements from "../Announcements";
 import { AlertSection } from "./styles";
 import { Text } from "../../styles";
 import { colors, fontSize, weight } from "../../theme";
+import { useEffect, useState } from "react";
+import { Alert } from "../../components";
 
 const Home = () => {
   const name = localStorage.getItem("name");
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertType, setAlertType] = useState();
+  const [alertMessage, setAlertMessage] = useState('');
+
+  useEffect(() => {
+    setAlertType("success");
+    setAlertMessage("Login efetuado com sucesso");
+    setAlertOpen(true);
+    setTimeout(() => {
+      setAlertOpen(false);
+    }, 3000);
+  }, []);
 
   return (
     <>
+      {alertOpen && <Alert message={alertMessage} type={alertType} />}
       <Text
         size={fontSize.text}
         weight={weight.bold}

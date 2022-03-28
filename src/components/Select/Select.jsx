@@ -6,12 +6,12 @@ const Select = ({ items, onChange }) => {
 
   return (
     <SelectInput onChange={(e) => onChange(e)}>
+      <OptionsInput value="0">Todos</OptionsInput>
       {items.map((item, ind) => (
         <OptionsInput value={item.descricao} key={`option-${ind}-${item}`}>
           {item.descricao}
         </OptionsInput>
       ))}
-      <OptionsInput value="0">Todos</OptionsInput>
     </SelectInput>
   );
 };

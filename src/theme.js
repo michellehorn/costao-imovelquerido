@@ -3,6 +3,8 @@ const colors = {
   primary: "#13395C",
   secondary: "#FBB016",
   gray: "#EEEEEE",
+  red: "#8D0B0B",
+  green: "#0B8D18",
   darkGray: "#444",
 };
 const fontSize = {

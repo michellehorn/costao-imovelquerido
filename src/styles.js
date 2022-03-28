@@ -143,7 +143,7 @@ const TableBody = styled.tbody`
   background: transparent;
   text-align: left;
   display: block;
-  overflow-y: ${({scroll}) => scroll && 'scroll'};
+  overflow-y: ${({scroll}) => scroll && 'auto'};
   height: ${({height}) => height || '200px'};
   padding: ${({ padding }) => padding};
 `;

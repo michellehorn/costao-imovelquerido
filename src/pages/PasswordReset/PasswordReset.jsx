@@ -8,9 +8,13 @@ import {
   Text,
 } from "../../styles";
 import { colors, weight } from "../../theme";
+import { useState } from "react";
+import { Alert } from "../../components";
 
 const PasswordReset = () => {
-
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertType, setAlertType] = useState();
+  const [alertMessage, setAlertMessage] = useState("");
   const token = localStorage.getItem("token");
 
   const handleSubmit = (e) => {
@@ -22,9 +26,6 @@ const PasswordReset = () => {
     }
 
     const { currentPassword, newPassword, confirmNewPassword } = obj;
-    console.log(currentPassword);
-    console.log(newPassword);
-    console.log(confirmNewPassword);
 
     api
       .put(
@@ -40,56 +41,73 @@ const PasswordReset = () => {
           },
         }
       )
-      .then((res) => {
-        console.log(res.status);
+      .then(() => {
+        setAlertType("success");
+        setAlertMessage("Senha alterada com sucesso!");
+        setAlertOpen(true);
+        setTimeout(() => {
+          setAlertOpen(false);
+        }, 3000);
       })
       .catch((error) => {
         console.log(error);
-        alert("erro ao definir a senha");
+        setAlertType("error");
+        setAlertMessage(`Erro! ${error.message}`);
+        setAlertOpen(true);
+        setTimeout(() => {
+          setAlertOpen(false);
+        }, 3000);
       });
   };
 
   return (
-    <FlexItem margin="auto" isFlex width="400px">
-      <form onSubmit={handleSubmit}>
-        <SectionTitle color={colors.primary} align="left" weight={weight.bold}>
-          Redefinição de senha
-        </SectionTitle>
-        <Text color={colors.primary} weight={weight.semibold}>
-          Senha atual
-        </Text>
-        <Input
-          height="30px"
-          color={colors.primary}
-          name="currentPassword"
-          type="password"
-          isFlex
-        />
-        <Text color={colors.primary} weight={weight.semibold}>
-          Senha nova
-        </Text>
-        <Input
-          height="30px"
-          color={colors.primary}
-          name="newPassword"
-          type="password"
-          isFlex
-        />
-        <Text color={colors.primary} weight={weight.semibold}>
-          Confirme a nova senha
-        </Text>
-        <Input
-          height="30px"
-          color={colors.primary}
-          name="confirmNewPassword"
-          type="password"
-          isFlex
-        />
-        <Aligner direction="center">
-          <ButtonSubmit type="submit">Entrar</ButtonSubmit>
-        </Aligner>
-      </form>
-    </FlexItem>
+    <>
+      {alertOpen && <Alert message={alertMessage} type={alertType} />}
+      <FlexItem margin="auto" isFlex width="400px">
+        <form onSubmit={handleSubmit}>
+          <SectionTitle
+            color={colors.primary}
+            align="left"
+            weight={weight.bold}
+          >
+            Redefinição de senha
+          </SectionTitle>
+          <Text color={colors.primary} weight={weight.semibold}>
+            Senha atual
+          </Text>
+          <Input
+            height="30px"
+            color={colors.primary}
+            name="currentPassword"
+            type="password"
+            isFlex
+          />
+          <Text color={colors.primary} weight={weight.semibold}>
+            Senha nova
+          </Text>
+          <Input
+            height="30px"
+            color={colors.primary}
+            name="newPassword"
+            type="password"
+            isFlex
+          />
+          <Text color={colors.primary} weight={weight.semibold}>
+            Confirme a nova senha
+          </Text>
+          <Input
+            height="30px"
+            color={colors.primary}
+            name="confirmNewPassword"
+            type="password"
+            isFlex
+          />
+          <Aligner direction="center">
+            <ButtonSubmit type="submit">Entrar</ButtonSubmit>
+          </Aligner>
+        </form>
+      </FlexItem>
+    </>
   );
 };
 

@@ -10,7 +10,6 @@ const HeaderStyle = styled.header`
     rgba(19, 57, 92, 1) 10%,
     rgba(19, 57, 92, 0.87)
   );
-  width: 100vw;
   height: 200px;
 `;
 

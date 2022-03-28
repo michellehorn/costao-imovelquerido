@@ -22,7 +22,7 @@ function Statement() {
   const [data, setData] = useState(null);
   const [monthYear, setMonthYear] = useState("122021");
   const [uhs, setUhs] = useState(0);
-  const [uhSetted, setUhSetted] = useState(0);
+  const [uhSetted, setUhSetted] = useState("0");
 
   const fetchDocs = (token, my, uh) => {
     api
@@ -33,6 +33,9 @@ function Statement() {
       })
       .then((res) => {
         setData(res.data);
+      })
+      .catch(() => {
+        setData(null);
       });
   };
 
