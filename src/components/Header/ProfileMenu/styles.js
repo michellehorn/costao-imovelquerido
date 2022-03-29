@@ -31,6 +31,10 @@ const UserName = styled.h5`
   position: absolute;
   right: 80px;
   font-weight: ${weight.bold};
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
+
 
 export { Menu, MenuItem, UserName };

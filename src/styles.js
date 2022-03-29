@@ -61,7 +61,7 @@ const FlexItem = styled.div`
   height: ${(props) => props.height};
   display: ${(props) => (props.flex ? "flex" : "block")};
   @media (max-width: 500px) {
-    width: ${({ mWidth }) => mWidth};
+    width: ${({ mWidth }) => mWidth || '300px'};
     margin: ${({ mMargin }) => mMargin};
   }
 `;
