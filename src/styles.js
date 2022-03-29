@@ -167,6 +167,9 @@ const TableBodyItem = styled.td`
   border-bottom: ${(props) =>
     props.border ? `1px solid ${colors.gray}` : "none"};
   padding-bottom: ${(props) => props.border && "5px"};
+  @media (max-width: 500px) {
+    border-bottom: 1px solid white;
+  }
 `;
 
 const TableHeader = styled.thead`
@@ -194,6 +197,9 @@ const Text = styled.label`
   margin-top: 20px;
   margin-bottom: ${(props) => props.mb};
   padding: ${(props) => props.padding};
+  @media (max-width: 500px) {
+    padding: ${({mP}) => mP};
+  }
 `;
 
 const Title = styled.h1`

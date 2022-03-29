@@ -33,6 +33,7 @@ const Home = () => {
         weight={weight.bold}
         inline
         color={colors.primary}
+        mP="0 10px"
       >
         Seja bem vindo(a),{" "}
       </Text>
