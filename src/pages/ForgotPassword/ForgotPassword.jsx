@@ -35,7 +35,7 @@ const ForgotPassword = () => {
         email: email,
       })
       .then((res) => {
-          console.log(res)
+        console.log(res);
         setAlertType("success");
         setAlertMessage("A nova senha chegará em seu email em alguns minutos!");
         setAlertOpen(true);
@@ -73,6 +73,7 @@ const ForgotPassword = () => {
             Informe seu código
           </Text>
           <Input
+            mWidth="300px"
             height="30px"
             color={colors.primary}
             name="login"
@@ -83,6 +84,7 @@ const ForgotPassword = () => {
             Informe seu e-mail
           </Text>
           <Input
+            mWidth="300px"
             height="30px"
             color={colors.primary}
             name="email"

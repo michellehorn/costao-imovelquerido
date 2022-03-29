@@ -10,6 +10,7 @@ import {
   Table,
   TableBody,
   TableBodyItem,
+  TableContainer,
   TableHeader,
   TableHeaderItem,
   TableRow,
@@ -77,7 +78,7 @@ function Statement() {
   };
 
   return (
-    <FlexItem margin="auto" isFlex width="800px">
+    <FlexItem margin="0px auto 30px" isFlex width="800px">
       <Aligner direction="center">
         <SectionTitle>Extrato de locação</SectionTitle>
         <FlexItem flex>
@@ -100,54 +101,56 @@ function Statement() {
             Não existem documentos para serem mostrados.
           </SectionTitle>
         ) : (
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHeaderItem width="65px">Apto</TableHeaderItem>
-                <TableHeaderItem width="120px">Data</TableHeaderItem>
-                <TableHeaderItem width="400px">Historico</TableHeaderItem>
-                <TableHeaderItem width="100px">Valor</TableHeaderItem>
-                <TableHeaderItem>Cred/Deb</TableHeaderItem>
-              </TableRow>
-            </TableHeader>
-            <TableBody height="170px" scroll>
-              {data.map((itemB, indB) => (
-                <TableRow key={`row-${indB}`}>
-                  <TableBodyItem
-                    width="65px"
-                    border
-                    key={`body-${itemB.Apto}-${indB}`}
-                  >
-                    {itemB.Apto}
-                  </TableBodyItem>
-                  <TableBodyItem
-                    width="120px"
-                    border
-                    key={`body-${itemB.Data}-xx`}
-                  >
-                    {itemB.Data}
-                  </TableBodyItem>
-                  <TableBodyItem
-                    width="400px"
-                    border
-                    key={`body-${itemB.Historico}-xx`}
-                  >
-                    {itemB.Historico}
-                  </TableBodyItem>
-                  <TableBodyItem
-                    width="100px"
-                    border
-                    key={`body-${itemB.Valor}-xx`}
-                  >
-                    {convertToReal(itemB.Valor)}
-                  </TableBodyItem>
-                  <TableBodyItem border key={`body-${itemB.CredDeb}-xx`}>
-                    {convertCredDeb(itemB.CredDeb)}
-                  </TableBodyItem>
+          <TableContainer>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderItem width="85px">Apto</TableHeaderItem>
+                  <TableHeaderItem width="120px">Data</TableHeaderItem>
+                  <TableHeaderItem width="400px">Historico</TableHeaderItem>
+                  <TableHeaderItem width="100px">Valor</TableHeaderItem>
+                  <TableHeaderItem>Cred/Deb</TableHeaderItem>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody height="170px" scroll>
+                {data.map((itemB, indB) => (
+                  <TableRow key={`row-${indB}`}>
+                    <TableBodyItem
+                      width="65px"
+                      border
+                      key={`body-${itemB.Apto}-${indB}`}
+                    >
+                      {itemB.Apto}
+                    </TableBodyItem>
+                    <TableBodyItem
+                      width="120px"
+                      border
+                      key={`body-${itemB.Data}-xx`}
+                    >
+                      {itemB.Data}
+                    </TableBodyItem>
+                    <TableBodyItem
+                      width="400px"
+                      border
+                      key={`body-${itemB.Historico}-xx`}
+                    >
+                      {itemB.Historico}
+                    </TableBodyItem>
+                    <TableBodyItem
+                      width="100px"
+                      border
+                      key={`body-${itemB.Valor}-xx`}
+                    >
+                      {convertToReal(itemB.Valor)}
+                    </TableBodyItem>
+                    <TableBodyItem border key={`body-${itemB.CredDeb}-xx`}>
+                      {convertCredDeb(itemB.CredDeb)}
+                    </TableBodyItem>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         )}
       </Aligner>
     </FlexItem>

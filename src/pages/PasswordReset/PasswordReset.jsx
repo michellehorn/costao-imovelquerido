@@ -76,6 +76,7 @@ const PasswordReset = () => {
             Senha atual
           </Text>
           <Input
+            mWidth="300px"
             height="30px"
             color={colors.primary}
             name="currentPassword"
@@ -86,6 +87,7 @@ const PasswordReset = () => {
             Senha nova
           </Text>
           <Input
+            mWidth="300px"
             height="30px"
             color={colors.primary}
             name="newPassword"
@@ -97,6 +99,7 @@ const PasswordReset = () => {
           </Text>
           <Input
             height="30px"
+            mWidth="300px"
             color={colors.primary}
             name="confirmNewPassword"
             type="password"

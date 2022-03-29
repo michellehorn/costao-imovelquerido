@@ -89,7 +89,7 @@ const Input = styled.input`
     outline: none;
   }
   @media (max-width: 500px) {
-    width: 300px;
+    width: ${({ mWidth }) => mWidth || "100px"};
   }
 `;
 
@@ -157,12 +157,14 @@ const Table = styled.table`
 
 const TableBody = styled.tbody`
   background: transparent;
-  width: 100%;
   text-align: left;
   display: block;
   overflow-y: ${({ scroll }) => scroll && "auto"};
   height: ${({ height }) => height || "200px"};
   padding: ${({ padding }) => padding};
+`;
+const TableContainer = styled.div`
+  overflow-x: scroll;
 `;
 
 const TableBodyItem = styled.td`
@@ -183,7 +185,7 @@ const TableHeaderItem = styled.th`
   color: ${colors.darkGray};
   font-weight: ${weight.bold};
   @media (max-width: 500px) {
-    width: ${({mWidth}) => mWidth};
+    width: ${({ mWidth }) => mWidth};
   }
 `;
 
@@ -192,9 +194,7 @@ const TableRow = styled.tr`
   margin-top: 40px;
   @media (max-width: 500px) {
     width: 100%;
-    min-width: 500px;
   }
-  
 `;
 
 const Text = styled.label`
@@ -240,6 +240,7 @@ export {
   Table,
   TableBody,
   TableBodyItem,
+  TableContainer,
   TableHeader,
   TableHeaderItem,
   TableRow,

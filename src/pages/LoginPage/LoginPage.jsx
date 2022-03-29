@@ -86,11 +86,11 @@ const LoginPage = () => {
             <Text color={colors.white} weight={weight.semibold}>
               Seu login*
             </Text>
-            <Input name="login" isFlex />
+            <Input mWidth="300px" name="login" isFlex />
             <Text color={colors.white} weight={weight.semibold}>
               Senha*
             </Text>
-            <Input name="password" type="password" isFlex />
+            <Input mWidth="300px" name="password" type="password" isFlex />
             <Link to="/forgot-password">
               <LinkItem onClick={goTo("/forgot-password")}>
                 Esqueci minha senha
