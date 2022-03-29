@@ -34,7 +34,6 @@ const ForgotPassword = () => {
         email: email,
       })
       .then((res) => {
-        console.log(res);
         setAlertType("success");
         setAlertMessage("A nova senha chegará em seu email em alguns minutos!");
         setAlertOpen(true);
@@ -44,7 +43,6 @@ const ForgotPassword = () => {
         }, 3000);
       })
       .catch((error) => {
-        console.log(error.response);
         setAlertType("error");
         setAlertMessage(`Erro! ${error.message}`);
         setAlertOpen(true);

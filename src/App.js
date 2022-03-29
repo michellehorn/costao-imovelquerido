@@ -12,24 +12,73 @@ import Documents from "./pages/Documents";
 import Statement from "./pages/Statement/Statement";
 import GenerateBill from "./pages/GenerateBill";
 import ForgotPassword from "./pages/ForgotPassword";
+import MidLevelPage from "./pages/MidLevelPage";
+
+import billImg from "./assets/bill.svg";
+import docCond from "./assets/doc_cond.svg";
+import docLoc from "./assets/doc_loc.svg";
+import docImage from "./assets/documents.svg";
+import statementImg from "./assets/statement.svg";
 
 function App() {
   const { state } = useContext(UserContext);
   const novaSenha = localStorage.getItem("novaSenha");
-  console.log(novaSenha === true)
-  console.log(novaSenha === 'true')
+
+  const midLevelItems = [
+    {
+      id: "home",
+      items: [
+        { src: docCond, link: "/cond", text: "Condomínio" },
+        { src: docLoc, link: "/loc", text: "Locação" },
+      ],
+    },
+    {
+      id: "cond",
+      items: [
+        {
+          src: billImg,
+          link: "/generate-bill",
+          text: "Emitir 2ª via de boleto",
+        },
+        { src: docImage, link: "/cond-docs", text: "Documentos" },
+      ],
+    },
+    {
+      id: "loc",
+      items: [
+        { src: statementImg, link: "/statement", text: "Extrato de locação" },
+        { src: docImage, link: "/loc-docs", text: "Documentos" },
+      ],
+    },
+  ];
 
   return (
     <>
       <GlobalStyle />
       <UserContextProvider value={{ ...state }}>
         <Routes>
-          <Route path="/login" element={<LoginPage  title="Login "/>} />
+          <Route path="/login" element={<LoginPage title="Login " />} />
           <Route
             path="/"
             element={
               <LoggedLayout title="Home">
-                <Home />
+                <Home items={midLevelItems[0].items} />
+              </LoggedLayout>
+            }
+          />
+          <Route
+            path="/cond"
+            element={
+              <LoggedLayout title="Condominio">
+                <MidLevelPage backLink="/" items={midLevelItems[1].items} />
+              </LoggedLayout>
+            }
+          />
+          <Route
+            path="/loc"
+            element={
+              <LoggedLayout backLink="/" title="Locação">
+                <MidLevelPage items={midLevelItems[2].items} />
               </LoggedLayout>
             }
           />
@@ -37,7 +86,7 @@ function App() {
             path="/change-password"
             element={
               <>
-                {novaSenha === 'true' ? (
+                {novaSenha === "true" ? (
                   <Layout title="Redefinição de senha">
                     <PasswordReset />
                   </Layout>
@@ -85,7 +134,7 @@ function App() {
           <Route
             path="/statement"
             element={
-              <LoggedLayout  title="Extrato de locação">
+              <LoggedLayout title="Extrato de locação">
                 <Statement />
               </LoggedLayout>
             }

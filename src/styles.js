@@ -24,6 +24,9 @@ const Aligner = styled.div`
   display: ${(props) => (props.flex ? "flex" : "")};
   justify-content: ${(props) => (props.flex ? "center" : "")};
   align-items: ${(props) => (props.flex ? "center" : "")};
+  @media (max-width: 500px) {
+    display: ${({ mDisplayN }) => mDisplayN && "none"};
+  }
 `;
 
 const ButtonSubmit = styled.button`
@@ -56,12 +59,18 @@ const DividerHorizontal = styled.div`
 `;
 
 const FlexItem = styled.div`
+  text-align: ${({ tAlign }) => tAlign};
   width: ${(props) => props.width};
   margin: ${(props) => props.margin};
   height: ${(props) => props.height};
+  padding: ${({ padding }) => padding};
+  min-height: ${({ minHeight }) => minHeight};
+  justify-content: ${({ jFlex }) => jFlex && "center"};
+  align-items: ${({ jFlex }) => jFlex && "center"};
   display: ${(props) => (props.flex ? "flex" : "block")};
+  cursor: ${({ hasCursor }) => hasCursor && "pointer"};
   @media (max-width: 500px) {
-    width: ${({ mWidth }) => mWidth || "300px"};
+    width: ${({ mWidth }) => mWidth || "340px"};
     margin: ${({ mMargin }) => mMargin};
   }
 `;
@@ -199,6 +208,7 @@ const TableRow = styled.tr`
   margin-top: 40px;
   @media (max-width: 500px) {
     width: 100%;
+    margin-top: 0;
   }
 `;
 
@@ -208,7 +218,7 @@ const Text = styled.label`
   font-weight: ${(props) => props.weight};
   display: ${(props) => (props.inline ? "inline" : "block")};
   text-align: ${(props) => props.textAlign || "left"};
-  margin-top: 20px;
+  margin-top: ${({ mt }) => mt || "20px"};
   margin-bottom: ${(props) => props.mb};
   padding: ${(props) => props.padding};
   @media (max-width: 500px) {

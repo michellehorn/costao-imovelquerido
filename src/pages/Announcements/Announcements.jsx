@@ -5,7 +5,7 @@ import {
   TableBody,
   TableBodyItem,
   TableRow,
-  Text
+  Text,
 } from "../../styles";
 import { colors, fontSize, weight } from "../../theme";
 import { useEffect, useState } from "react";
@@ -33,17 +33,17 @@ const Announcements = () => {
 
   return (
     <>
-      <Aligner direction="center" flex>
+      <Aligner mDisplayN direction="center" flex>
         <Text
           weight={weight.bold}
-          padding="10px 10px 30px 0"
           fontSize={fontSize.label}
           color={colors.secondary}
           textAlign="center"
+          mt="0"
         >
           Avisos
         </Text>
-        <WarningIcon width="15px" height="15px" />
+        <WarningIcon width="15px" height="15px" margin="10px" />
       </Aligner>
       <Aligner direction="center" flex>
         {!data ? (
@@ -52,13 +52,13 @@ const Announcements = () => {
           </Text>
         ) : (
           <Table>
-            <TableBody padding="0 30px">
+            <TableBody padding="0 30px" height="100%">
               {data.map((itemB, indB) => (
                 <TableRow key={`row-${indB}`}>
                   <TableBodyItem width="150px" border key={`body-${indB}-d`}>
                     {itemB.Data}
                   </TableBodyItem>
-                  <TableBodyItem  width="200px" border key={`body-${indB}-t`}>
+                  <TableBodyItem width="200px" border key={`body-${indB}-t`}>
                     {itemB.Titulo}
                   </TableBodyItem>
                   <TableBodyItem width="200px" border key={`body-${indB}-a`}>

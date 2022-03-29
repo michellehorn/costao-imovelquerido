@@ -54,7 +54,6 @@ const PasswordReset = () => {
         }, 3000);
       })
       .catch((error) => {
-        console.log(error);
         setAlertType("error");
         setAlertMessage(`Erro! ${error}`);
         setAlertOpen(true);
