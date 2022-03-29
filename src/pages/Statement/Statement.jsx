@@ -27,7 +27,7 @@ function Statement() {
 
   const date = new Date();
   const month =
-    date.getMonth().length > 1 ? date.getMonth() : `0${date.getMonth()}`;
+    date.getMonth().length > 1 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`;
   const my = `${month}/${date.getFullYear()}`;
 
   const formattedValue = (value) => value.replace(/[^0-9]/g, "");
