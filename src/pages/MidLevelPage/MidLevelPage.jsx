@@ -9,7 +9,7 @@ function MidLevelPage({ backLink, items }) {
 
   return (
     <>
-      <LinkItem onClick={() => navigate(backLink)} hasCursor align="left">
+      <LinkItem onClick={() => navigate(backLink)} hasCursor align="left" mPl="40px">
         <ImgRender width="30px" height="30px" src={backIcon} />
       </LinkItem>
       <FlexItem

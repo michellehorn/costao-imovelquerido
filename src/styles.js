@@ -121,6 +121,9 @@ const LinkItem = styled.span`
   font-weight: ${weight.regular};
   text-align: ${({ align }) => align || "right"};
   cursor: ${(props) => (props.hasCursor ? "pointer" : "")};
+  @media (max-width: 500px) {
+    padding-left: ${({ mPl }) => mPl};
+  }
 `;
 
 const LogoWhite = styled.div`
