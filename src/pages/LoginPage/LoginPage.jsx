@@ -15,11 +15,13 @@ import { api } from "../../services/api";
 import { useState } from "react";
 import { Alert } from "../../components";
 
-const LoginPage = () => {
+const LoginPage = ({ title }) => {
   const navigate = useNavigate();
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState();
   const [alertMessage, setAlertMessage] = useState("");
+
+  document.title = `Portal do Proprietário | ${title}`;
 
   const handleSubmit = (e) => {
     const formData = new FormData(e.currentTarget);
@@ -47,7 +49,7 @@ const LoginPage = () => {
         setAlertOpen(true);
 
         if (novaSenha) {
-          navigate('/change-password')
+          navigate("/change-password");
           setAlertMessage("Login efetuado com sucesso. Agora mude sua senha!");
         } else {
           setAlertMessage("Login efetuado com sucesso");

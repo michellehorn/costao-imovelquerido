@@ -24,19 +24,11 @@ function App() {
       <GlobalStyle />
       <UserContextProvider value={{ ...state }}>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage  title="Login "/>} />
           <Route
             path="/"
             element={
-              <LoggedLayout>
-                <Home />
-              </LoggedLayout>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <LoggedLayout>
+              <LoggedLayout title="Home">
                 <Home />
               </LoggedLayout>
             }
@@ -46,11 +38,11 @@ function App() {
             element={
               <>
                 {novaSenha === 'true' ? (
-                  <Layout>
+                  <Layout title="Redefinição de senha">
                     <PasswordReset />
                   </Layout>
                 ) : (
-                  <LoggedLayout>
+                  <LoggedLayout title="Redefinição de senha">
                     <PasswordReset />
                   </LoggedLayout>
                 )}
@@ -61,7 +53,7 @@ function App() {
             path="/forgot-password"
             exact
             element={
-              <Layout>
+              <Layout title="Esqueci minha senha">
                 <ForgotPassword />
               </Layout>
             }
@@ -69,7 +61,7 @@ function App() {
           <Route
             path="/generate-bill"
             element={
-              <LoggedLayout>
+              <LoggedLayout title="Emitir 2 via de boleto">
                 <GenerateBill type="bill" />
               </LoggedLayout>
             }
@@ -77,7 +69,7 @@ function App() {
           <Route
             path="/loc-docs"
             element={
-              <LoggedLayout>
+              <LoggedLayout title="Documentos de locação">
                 <Documents type="L" />
               </LoggedLayout>
             }
@@ -85,7 +77,7 @@ function App() {
           <Route
             path="/cond-docs"
             element={
-              <LoggedLayout>
+              <LoggedLayout title="Documentos condominais">
                 <Documents type="C" />
               </LoggedLayout>
             }
@@ -93,7 +85,7 @@ function App() {
           <Route
             path="/statement"
             element={
-              <LoggedLayout>
+              <LoggedLayout  title="Extrato de locação">
                 <Statement />
               </LoggedLayout>
             }

@@ -1,9 +1,11 @@
 import Header from "../Header";
 import { Container } from "../LoggedLayout/styles";
 
-const Layout = ({ children }) => {
+const Layout = ({ title, children }) => {
   const logged = localStorage.getItem("token");
   const novaSenha = localStorage.getItem("novaSenha") === "true";
+
+  document.title = `Portal do Proprietário | ${title}`;
 
   return (
     <>
