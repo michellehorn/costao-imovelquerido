@@ -10,12 +10,14 @@ import {
 import { colors, weight } from "../../theme";
 import { useState } from "react";
 import { Alert } from "../../components";
+import { useNavigate } from "react-router";
 
 const PasswordReset = () => {
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState();
   const [alertMessage, setAlertMessage] = useState("");
   const token = localStorage.getItem("token");
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     const formData = new FormData(e.currentTarget);
@@ -47,12 +49,14 @@ const PasswordReset = () => {
         setAlertOpen(true);
         setTimeout(() => {
           setAlertOpen(false);
+          localStorage.removeItem("novaSenha");
+          navigate('/')
         }, 3000);
       })
       .catch((error) => {
         console.log(error);
         setAlertType("error");
-        setAlertMessage(`Erro! ${error.message}`);
+        setAlertMessage(`Erro! ${error}`);
         setAlertOpen(true);
         setTimeout(() => {
           setAlertOpen(false);
@@ -106,7 +110,7 @@ const PasswordReset = () => {
             isFlex
           />
           <Aligner direction="center">
-            <ButtonSubmit type="submit">Entrar</ButtonSubmit>
+            <ButtonSubmit type="submit">Enviar</ButtonSubmit>
           </Aligner>
         </form>
       </FlexItem>

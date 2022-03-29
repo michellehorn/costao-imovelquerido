@@ -41,6 +41,7 @@ const ForgotPassword = () => {
         setAlertOpen(true);
         setTimeout(() => {
           setAlertOpen(false);
+          navigate('/login')
         }, 3000);
       })
       .catch((error) => {

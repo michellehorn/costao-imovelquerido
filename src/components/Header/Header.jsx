@@ -3,9 +3,8 @@ import { FlexItem, LogoWhite } from "../../styles";
 import ProfileMenu from "./ProfileMenu";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ onMenuClick }) => {
+const Header = ({ logged, onMenuClick }) => {
   const navigate = useNavigate();
-  const logged = localStorage.getItem("token");
 
   return (
     <HeaderImage>
@@ -18,6 +17,7 @@ const Header = ({ onMenuClick }) => {
               margin="auto"
               width="140px"
               height="140px"
+              hasCursor
             />
             <HeaderTitle>Portal do Proprietário</HeaderTitle>
           </div>

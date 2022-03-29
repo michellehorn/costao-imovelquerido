@@ -121,6 +121,8 @@ const LogoWhite = styled.div`
   background-size: contain;
   margin: ${(props) => props.margin};
   justify-content: "center";
+  cursor: ${({ hasCursor }) => hasCursor && "pointer"};
+
   @media (max-width: 500px) {
     margin: 30px auto 0;
   }
@@ -173,6 +175,7 @@ const TableBodyItem = styled.td`
   border-bottom: ${(props) =>
     props.border ? `1px solid ${colors.gray}` : "none"};
   padding-bottom: ${(props) => props.border && "5px"};
+  padding-right: ${({ pr }) => pr};
 `;
 
 const TableHeader = styled.thead`
@@ -184,8 +187,10 @@ const TableHeaderItem = styled.th`
   width: ${(props) => props.width};
   color: ${colors.darkGray};
   font-weight: ${weight.bold};
+  padding-right: ${({ pr }) => pr};
   @media (max-width: 500px) {
     width: ${({ mWidth }) => mWidth};
+    padding-right: 0;
   }
 `;
 

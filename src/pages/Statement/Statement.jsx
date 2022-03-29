@@ -25,6 +25,14 @@ function Statement() {
   const [uhs, setUhs] = useState(0);
   const [uhSetted, setUhSetted] = useState("0");
 
+  const date = new Date();
+  const month =
+    date.getMonth().length > 1 ? date.getMonth() : `0${date.getMonth()}`;
+  const my = `${month}${date.getFullYear()}`;
+
+  console.log(my)
+  const formattedValue = (value) => value.replace(/[^0-9]/g, "");
+
   const fetchDocs = (token, my, uh) => {
     api
       .get(`/uh/${uh}/extrato?mesano=${my}`, {
@@ -54,22 +62,22 @@ function Statement() {
 
   useEffect(() => {
     fetchUhs(token);
-  }, [token]);
+    setMonthYear(formattedValue(my));
+  }, [token, my]);
 
   useEffect(() => {
     fetchDocs(token, monthYear, uhSetted);
-  }, [token, monthYear, uhSetted]);
+  }, [token, monthYear, uhSetted, my]);
 
   const convertToReal = (value) => `R$${Number(value).toFixed(2)}`;
   const convertCredDeb = (value) => (value === "C" ? "Crédito" : "Débito");
 
   const handleInputDateChange = (e) => {
     const { value } = e.target;
+    const newV = formattedValue(value);
 
-    const formattedValue = value.replace(/[^0-9]/g, "");
-
-    if (formattedValue.length === 6) {
-      setMonthYear(formattedValue);
+    if (newV.length === 6) {
+      setMonthYear(newV);
     }
   };
 
@@ -86,9 +94,10 @@ function Statement() {
             <Text>Mês/Ano</Text>
             <Input
               onChange={(e) => handleInputDateChange(e)}
-              placeholder="Ex: 02/2021"
+              placeholder={`Ex: ${my}`}
               width="100px"
               color={colors.primary}
+              value={my}
             />
           </div>
           <div>
@@ -109,7 +118,7 @@ function Statement() {
                   <TableHeaderItem width="120px">Data</TableHeaderItem>
                   <TableHeaderItem width="400px">Historico</TableHeaderItem>
                   <TableHeaderItem width="100px">Valor</TableHeaderItem>
-                  <TableHeaderItem>Cred/Deb</TableHeaderItem>
+                  <TableHeaderItem pr="30px">Cred/Deb</TableHeaderItem>
                 </TableRow>
               </TableHeader>
               <TableBody height="170px" scroll>
@@ -143,7 +152,11 @@ function Statement() {
                     >
                       {convertToReal(itemB.Valor)}
                     </TableBodyItem>
-                    <TableBodyItem border key={`body-${itemB.CredDeb}-xx`}>
+                    <TableBodyItem
+                      pr="10px"
+                      border
+                      key={`body-${itemB.CredDeb}-xx`}
+                    >
                       {convertCredDeb(itemB.CredDeb)}
                     </TableBodyItem>
                   </TableRow>

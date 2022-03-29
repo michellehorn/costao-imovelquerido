@@ -68,7 +68,7 @@ function Documents({ type }) {
                   <TableBodyItem width="600px" border key={`body-${indB}-m`}>
                     {itemB.nome}
                   </TableBodyItem>
-                  <TableBodyItem border key={`body-${indB}-m`}>
+                  <TableBodyItem border key={`body-${indB}-m`} pr="10px">
                     <LinkItem
                       onClick={() => downloadFile(itemB.arquivo)}
                       hasCursor

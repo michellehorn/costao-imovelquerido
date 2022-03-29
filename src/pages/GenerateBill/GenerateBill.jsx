@@ -64,10 +64,11 @@ function GenerateBill() {
                   <TableBodyItem width="600px" border key={`body-${indB}-m`}>
                     {itemB.nome}
                   </TableBodyItem>
-                  <TableBodyItem border key={`body-${indB}-m`}>
+                  <TableBodyItem pr="10px" border key={`body-${indB}-m`}>
                     <LinkItem
                       onClick={() => downloadFile(itemB.arquivo)}
                       hasCursor
+                      pr="10px"
                       color={colors.primary}
                       pt="0"
                       flex

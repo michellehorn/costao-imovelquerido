@@ -1,13 +1,16 @@
 import Header from "../Header";
 import { Container } from "../LoggedLayout/styles";
 
-const LoggedLayout = ({ children }) => {
+const Layout = ({ children }) => {
+  const logged = localStorage.getItem("token");
+  const novaSenha = localStorage.getItem("novaSenha") === "true";
+
   return (
     <>
-      <Header logged={false} />
+      <Header logged={logged && !novaSenha} />
       <Container>{children}</Container>
     </>
   );
 };
 
-export default LoggedLayout;
+export default Layout;

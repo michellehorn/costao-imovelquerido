@@ -41,22 +41,25 @@ const LoginPage = () => {
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("just_logged", true);
         const { novaSenha } = res.data;
+        localStorage.setItem("novaSenha", novaSenha);
 
         setAlertType("success");
         setAlertOpen(true);
 
         if (novaSenha) {
-          navigate("/change-password");
+          navigate('/change-password')
           setAlertMessage("Login efetuado com sucesso. Agora mude sua senha!");
         } else {
-          navigate("/");
           setAlertMessage("Login efetuado com sucesso");
+          navigate("/");
         }
+
         setTimeout(() => {
           setAlertOpen(false);
         }, 3000);
       })
       .catch(() => {
+        e.preventDefault();
         setAlertType("error");
         setAlertMessage("Login ou senha incorretos. Tente novamente");
         setAlertOpen(true);
@@ -65,8 +68,6 @@ const LoginPage = () => {
         }, 3000);
       });
   };
-
-  const goTo = (where) => navigate(where);
 
   return (
     <BackgroundCover>
@@ -92,7 +93,7 @@ const LoginPage = () => {
             </Text>
             <Input mWidth="300px" name="password" type="password" isFlex />
             <Link to="/forgot-password">
-              <LinkItem onClick={goTo("/forgot-password")}>
+              <LinkItem onClick={() => navigate("/forgot-password")}>
                 Esqueci minha senha
               </LinkItem>
             </Link>

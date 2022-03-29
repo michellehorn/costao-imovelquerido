@@ -21,7 +21,7 @@ const LoggedLayout = ({ children }) => {
         isOpen={isSidebarOpen}
         toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
       />
-      <Header onMenuClick={() => setSidebarOpen(!isSidebarOpen)} />
+      <Header logged onMenuClick={() => setSidebarOpen(!isSidebarOpen)} />
       <Container>{children}</Container>
     </>
   );

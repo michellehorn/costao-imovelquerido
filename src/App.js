@@ -15,6 +15,9 @@ import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   const { state } = useContext(UserContext);
+  const novaSenha = localStorage.getItem("novaSenha");
+  console.log(novaSenha === true)
+  console.log(novaSenha === 'true')
 
   return (
     <>
@@ -41,13 +44,22 @@ function App() {
           <Route
             path="/change-password"
             element={
-              <LoggedLayout>
-                <PasswordReset />
-              </LoggedLayout>
+              <>
+                {novaSenha === 'true' ? (
+                  <Layout>
+                    <PasswordReset />
+                  </Layout>
+                ) : (
+                  <LoggedLayout>
+                    <PasswordReset />
+                  </LoggedLayout>
+                )}
+              </>
             }
           />
           <Route
             path="/forgot-password"
+            exact
             element={
               <Layout>
                 <ForgotPassword />
