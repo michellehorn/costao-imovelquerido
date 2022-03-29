@@ -61,7 +61,7 @@ const FlexItem = styled.div`
   height: ${(props) => props.height};
   display: ${(props) => (props.flex ? "flex" : "block")};
   @media (max-width: 500px) {
-    width: ${({ mWidth }) => mWidth || '300px'};
+    width: ${({ mWidth }) => mWidth || "300px"};
     margin: ${({ mMargin }) => mMargin};
   }
 `;
@@ -110,7 +110,7 @@ const LinkItem = styled.span`
   font-family: "Montserrat", sans-serif;
   font-size: ${fontSize.text};
   font-weight: ${weight.regular};
-  text-align: ${({align}) => align || 'right'};
+  text-align: ${({ align }) => align || "right"};
   cursor: ${(props) => (props.hasCursor ? "pointer" : "")};
 `;
 
@@ -149,11 +149,15 @@ const Table = styled.table`
   background-color: transparent;
   border-spacing: 0 1em;
   max-height: 400px;
-  overflow-y: scroll;
+
+  @media (max-width: 500px) {
+    max-width: 400px;
+  }
 `;
 
 const TableBody = styled.tbody`
   background: transparent;
+  width: 100%;
   text-align: left;
   display: block;
   overflow-y: ${({ scroll }) => scroll && "auto"};
@@ -167,9 +171,6 @@ const TableBodyItem = styled.td`
   border-bottom: ${(props) =>
     props.border ? `1px solid ${colors.gray}` : "none"};
   padding-bottom: ${(props) => props.border && "5px"};
-  @media (max-width: 500px) {
-    border-bottom: 1px solid white;
-  }
 `;
 
 const TableHeader = styled.thead`
@@ -181,11 +182,19 @@ const TableHeaderItem = styled.th`
   width: ${(props) => props.width};
   color: ${colors.darkGray};
   font-weight: ${weight.bold};
+  @media (max-width: 500px) {
+    width: ${({mWidth}) => mWidth};
+  }
 `;
 
 const TableRow = styled.tr`
   width: 100px;
   margin-top: 40px;
+  @media (max-width: 500px) {
+    width: 100%;
+    min-width: 500px;
+  }
+  
 `;
 
 const Text = styled.label`
@@ -198,7 +207,7 @@ const Text = styled.label`
   margin-bottom: ${(props) => props.mb};
   padding: ${(props) => props.padding};
   @media (max-width: 500px) {
-    padding: ${({mP}) => mP};
+    padding: ${({ mP }) => mP};
   }
 `;
 

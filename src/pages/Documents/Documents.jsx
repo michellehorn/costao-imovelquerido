@@ -54,7 +54,7 @@ function Documents({ type }) {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHeaderItem width="200px">Criado em</TableHeaderItem>
+                <TableHeaderItem mWidth="90px">Data</TableHeaderItem>
                 <TableHeaderItem>Descrição</TableHeaderItem>
                 <TableHeaderItem> </TableHeaderItem>
               </TableRow>

@@ -51,14 +51,14 @@ function GenerateBill() {
             <TableHeader>
               <TableRow>
                 <TableHeaderItem width="200px">Criado em</TableHeaderItem>
-                <TableHeaderItem>Descrição</TableHeaderItem>
+                <TableHeaderItem width="600px">Descrição</TableHeaderItem>
                 <TableHeaderItem> </TableHeaderItem>
               </TableRow>
             </TableHeader>
             <TableBody scroll>
               {data.map((itemB, indB) => (
                 <TableRow key={`row-${indB}`}>
-                  <TableBodyItem width="200px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="230px" border key={`body-${indB}-m`}>
                     {itemB.data}
                   </TableBodyItem>
                   <TableBodyItem width="600px" border key={`body-${indB}-m`}>
