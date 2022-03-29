@@ -28,9 +28,8 @@ function Statement() {
   const date = new Date();
   const month =
     date.getMonth().length > 1 ? date.getMonth() : `0${date.getMonth()}`;
-  const my = `${month}${date.getFullYear()}`;
+  const my = `${month}/${date.getFullYear()}`;
 
-  console.log(my)
   const formattedValue = (value) => value.replace(/[^0-9]/g, "");
 
   const fetchDocs = (token, my, uh) => {
@@ -97,7 +96,7 @@ function Statement() {
               placeholder={`Ex: ${my}`}
               width="100px"
               color={colors.primary}
-              value={my}
+              defaultValue={my}
             />
           </div>
           <div>

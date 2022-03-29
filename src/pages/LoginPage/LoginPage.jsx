@@ -85,7 +85,7 @@ const LoginPage = () => {
               Acesso proprietário
             </Title>
             <Text color={colors.white} weight={weight.semibold}>
-              Seu login*
+              Seu email*
             </Text>
             <Input mWidth="300px" name="login" isFlex />
             <Text color={colors.white} weight={weight.semibold}>

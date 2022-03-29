@@ -27,11 +27,10 @@ const ForgotPassword = () => {
       obj[key] = value;
     }
 
-    const { login, email } = obj;
+    const { email } = obj;
 
     api
       .post("/senha", {
-        login: login,
         email: email,
       })
       .then((res) => {
@@ -70,17 +69,6 @@ const ForgotPassword = () => {
           >
             Esqueci minha senha
           </SectionTitle>
-          <Text color={colors.primary} weight={weight.semibold}>
-            Informe seu código
-          </Text>
-          <Input
-            mWidth="300px"
-            height="30px"
-            color={colors.primary}
-            name="login"
-            type="text"
-            isFlex
-          />
           <Text color={colors.primary} weight={weight.semibold}>
             Informe seu e-mail
           </Text>
