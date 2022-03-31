@@ -50,23 +50,27 @@ function GenerateBill() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHeaderItem width="200px">Criado em</TableHeaderItem>
-                <TableHeaderItem width="600px">Descrição</TableHeaderItem>
+                <TableHeaderItem width="130px">Criado em</TableHeaderItem>
+                <TableHeaderItem width="400px">Descrição</TableHeaderItem>
+                <TableHeaderItem width="100px">Status</TableHeaderItem>
                 <TableHeaderItem> </TableHeaderItem>
               </TableRow>
             </TableHeader>
             <TableBody scroll>
               {data.map((itemB, indB) => (
                 <TableRow key={`row-${indB}`}>
-                  <TableBodyItem width="230px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="130px" border key={`body-${indB}-m`}>
                     {itemB.data}
                   </TableBodyItem>
-                  <TableBodyItem width="600px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="400px" border key={`body-${indB}-m`}>
                     {itemB.nome}
+                  </TableBodyItem>
+                  <TableBodyItem width="100px" border key={`body-${indB}-m`}>
+                    {itemB.aberto ? 'Aberto' : 'Pago'}
                   </TableBodyItem>
                   <TableBodyItem pr="10px" border key={`body-${indB}-m`}>
                     <LinkItem
-                      onClick={() => downloadFile(itemB.arquivo)}
+                      onClick={() => downloadFile(itemB.id, itemB.arquivo)}
                       hasCursor
                       pr="10px"
                       color={colors.primary}

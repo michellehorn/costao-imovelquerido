@@ -14,13 +14,14 @@ import {
   TableHeaderItem,
   TableRow,
 } from "../../styles";
+import { fetchFile } from "../../services/download-file";
 
 function Documents({ type }) {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("token");
 
-  const downloadFile = (file) => {
-    window.open(file);
+  const downloadFile = (fileId, fileName) => {
+    fetchFile(fileId, fileName)
   };
 
   const handleTitle = (type) =>
@@ -62,15 +63,15 @@ function Documents({ type }) {
             <TableBody scroll>
               {data.map((itemB, indB) => (
                 <TableRow key={`row-${indB}`}>
-                  <TableBodyItem width="200px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="200px" border key={`body-${itemB.data}-m`}>
                     {itemB.data}
                   </TableBodyItem>
-                  <TableBodyItem width="600px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="600px" border key={`body-${itemB.nome}-m`}>
                     {itemB.nome}
                   </TableBodyItem>
-                  <TableBodyItem border key={`body-${indB}-m`} pr="10px">
+                  <TableBodyItem border key={`body-${itemB.id}-m`} pr="10px">
                     <LinkItem
-                      onClick={() => downloadFile(itemB.arquivo)}
+                      onClick={() => downloadFile(itemB.id, itemB.arquivo)}
                       hasCursor
                       color={colors.primary}
                       pt="0"
