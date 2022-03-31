@@ -13,8 +13,8 @@ function getBase64(file, fileName) {
   a.click();
 }
 
-function fetchFile(id, fileName) {
-  api
+async function fetchFile(id, fileName) {
+  await api
     .get(`download/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,

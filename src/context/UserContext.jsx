@@ -6,7 +6,8 @@ const DEFAULT_VALUE = {
     name: "",
     email: "",
     nova_senha: "",
-    token: ""
+    token: "",
+    loading: false
   },
   setState: () => {},
 };

@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 import { Container } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../../components";
+import UserContext from "../../context/UserContext";
 
 const LoggedLayout = ({ title, children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const { state } = useContext(UserContext);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -18,6 +21,8 @@ const LoggedLayout = ({ title, children }) => {
 
   return (
     <>
+      {state.loading && <Loading status={state.loading} />}
+
       <Sidebar
         isOpen={isSidebarOpen}
         toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
