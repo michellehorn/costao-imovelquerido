@@ -2,26 +2,22 @@ import { api } from "./api";
 
 const token = localStorage.getItem("token");
 
-const a = document.createElement("a");
-a.style.display = "none";
-
-function getBase64(file, fileName) {
-  var a = document.createElement("a");
-  a.display = "none";
-  a.href = "data:image/png;base64," + file;
-  a.download = fileName;
-  a.click();
-}
-
 async function fetchFile(id, fileName) {
   await api
     .get(`download/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      responseType: "blob",
     })
-    .then((item) => {
-      getBase64(item.data, fileName);
+    .then((response) => {
+      const contentType = response.headers["content-type"];
+      const newBlob = new Blob([response.data], { type: contentType });
+      const data = window.URL.createObjectURL(newBlob);
+      let link = document.createElement("a");
+      link.href = data;
+      link.download = fileName;
+      link.click();
     });
 }
 
