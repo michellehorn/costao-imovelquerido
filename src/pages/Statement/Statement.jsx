@@ -136,7 +136,7 @@ function Statement() {
                 <TableRow>
                   <TableHeaderItem width="85px">Apto</TableHeaderItem>
                   <TableHeaderItem width="400px">Data</TableHeaderItem>
-                  <TableHeaderItem width="200px">Valor</TableHeaderItem>
+                  <TableHeaderItem width="fit-content">Valor</TableHeaderItem>
                 </TableRow>
               </TableHeader>
               <TableBody height="170px">
@@ -159,7 +159,7 @@ function Statement() {
                     </TableBodyItem>
 
                     <TableBodyItem
-                      width="200px"
+                      width="fit-content"
                       border
                       weight="500"
                       key={`body-${itemB.Valor}-xx`}
