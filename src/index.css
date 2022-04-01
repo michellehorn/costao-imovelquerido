@@ -9,3 +9,7 @@ body {
   padding: 0 !important;
   font-family: "Montserrat", sans-serif;
 }
+
+html, body, #root {
+  height: 100%;
+}

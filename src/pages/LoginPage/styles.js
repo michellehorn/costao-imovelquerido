@@ -21,6 +21,7 @@ const Background = styled.main`
 
 const BackgroundCover = styled.div`
   background-image: url(${resortImg});
+  height: 100%;
   background-size: cover;
 
   @media (max-width: 500px) {
