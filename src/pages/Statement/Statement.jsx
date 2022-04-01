@@ -165,18 +165,9 @@ function Statement() {
                       key={`body-${itemB.Valor}-xx`}
                     >
                       <TextItem
-                        color={
-                          isNeg(itemB.Valor) ? colors.red : colors.primary
-                        }
+                        color={isNeg(itemB.Valor) ? colors.red : colors.primary}
                       >
-                        {itemB.Valor ? `R$${itemB.Valor}` : "ㅤ"}
-                      </TextItem>
-                      <TextItem
-                        color={
-                          isNeg(itemB.Saldo)  ? colors.red : colors.primary
-                        }
-                      >
-                        <b> Saldo: </b> R${itemB.Saldo}
+                        {itemB.Valor ? `R$ ${itemB.Valor}` : "ㅤ"}
                       </TextItem>
                     </TableBodyItem>
                   </TableRow>
