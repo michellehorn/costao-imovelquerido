@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { colors } from "../../theme";
 
 const Container = styled.main`
-  position: absolute;
+  position: fixed;
   background-color: ${colors.primary};
   opacity: 0.8;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   align-items: center;
   display: flex;
