@@ -165,10 +165,9 @@ function Statement() {
                       weight="500"
                       key={`body-${itemB.Valor}-xx`}
                       color={
-                        itemB.CredDeb === "C" ? colors.red : colors.primary
+                        itemB.CredDeb === "D" ? colors.red : colors.primary
                       }
                     >
-                      {itemB.CredDeb === "C" && "-"}
                       {convertToReal(itemB.Valor)}
                     </TableBodyItem>
                   </TableRow>
