@@ -98,7 +98,7 @@ const Input = styled.input`
     outline: none;
   }
   @media (max-width: 500px) {
-    width: ${({ mWidth }) => mWidth || "100px"};
+    width: ${({ mWidth }) => mWidth || "200px"};
   }
 `;
 
