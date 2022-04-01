@@ -4,7 +4,7 @@ import { colors } from "../../theme";
 const SidebarContainer = styled.div`
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   display: ${({ sidebarOpen }) => (sidebarOpen ? "inherit" : "none")};
   background: ${colors.primary};
   opacity: 0.4;
@@ -13,7 +13,7 @@ const SidebarContainer = styled.div`
 
 const SidebarArea = styled.aside`
   height: 100%;
-  position: absolute;
+  position: fixed;
   opacity: 1;
   width: 300px;
   z-index: 1000;

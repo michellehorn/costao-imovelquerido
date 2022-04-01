@@ -2,15 +2,16 @@ import Announcements from "../Announcements";
 import { AlertSection } from "./styles";
 import { FlexItem, Text } from "../../styles";
 import { colors, fontSize, weight } from "../../theme";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Alert } from "../../components";
 import { ImgRender } from "../../pages/MidLevelPage/styles";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 const Home = ({ items }) => {
   const name = localStorage.getItem("name");
   const justLogged = localStorage.getItem("just_logged");
-
+  const { setState } = useContext(UserContext);
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState();
   const [alertMessage, setAlertMessage] = useState("");
@@ -28,6 +29,10 @@ const Home = ({ items }) => {
       localStorage.removeItem("just_logged");
     }
   }, [justLogged]);
+
+  useEffect(() => {
+    setState({ breadcrumb: null });
+  }, [setState]);
 
   return (
     <>

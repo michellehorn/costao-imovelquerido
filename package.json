@@ -1,5 +1,10 @@
 {
   "name": "costao-imovelquerido",
+  "author": {
+    "name": "Michelle Horn",
+    "email": "michelle.horn@live.com",
+    "url": "https://github.com/michellehorn"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {

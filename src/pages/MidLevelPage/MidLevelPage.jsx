@@ -1,17 +1,29 @@
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FlexItem, LinkItem, Text } from "../../styles";
+import UserContext from "../../context/UserContext";
+import { FlexItem, Text } from "../../styles";
 import { ImgRender } from "./styles";
 import { colors } from "../../theme";
-import backIcon from "../../assets/back_icon.svg";
 
-function MidLevelPage({ backLink, items }) {
+function MidLevelPage({ backLink, items, text }) {
   const navigate = useNavigate();
+  const { setState } = useContext(UserContext);
+
+  useEffect(() => {
+    if (backLink)
+      setState({
+        breadcrumb: [
+          {
+            text: "Home",
+            link: "/",
+          },
+          { text: text },
+        ],
+      });
+  }, [items]);
 
   return (
     <>
-      <LinkItem onClick={() => navigate(backLink)} hasCursor align="left" mPl="40px">
-        <ImgRender width="30px" height="30px" src={backIcon} />
-      </LinkItem>
       <FlexItem
         mWidth="100%"
         hasCursor

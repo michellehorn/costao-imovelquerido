@@ -7,7 +7,8 @@ const DEFAULT_VALUE = {
     email: "",
     nova_senha: "",
     token: "",
-    loading: false
+    loading: false,
+    breadcrumb: null,
   },
   setState: () => {},
 };

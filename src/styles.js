@@ -33,7 +33,7 @@ const ButtonSubmit = styled.button`
   background-color: ${colors.secondary};
   color: ${colors.primary};
   height: ${(props) => props.height || "48px"};
-  padding: 14px 32px;
+  padding: ${({ padding }) => padding || "14px 32px"};
   border: none;
   font-size: ${fontSize.text};
   margin-top: 30px;
@@ -104,9 +104,9 @@ const Input = styled.input`
 
 const Link = styled.a`
   color: ${colors.primary};
-  cursor: pointer;
+  cursor: ${({ noCursor }) => noCursor || "pointer"};
   display: block;
-  font-weight: ${weight.bold};
+  font-weight: ${({ w }) => w || weight.bold};
   padding: ${(props) => props.pl};
   text-decoration: ${(props) => props.decoration};
 `;
@@ -159,35 +159,30 @@ const SectionTitle = styled.h1`
 
 const Table = styled.table`
   width: 100%;
-  height: ${(props) => props.height || "100%"};
   background-color: transparent;
   border-spacing: 0 1em;
-  max-height: 400px;
-
-  @media (max-width: 500px) {
-    max-width: 400px;
-  }
 `;
 
 const TableBody = styled.tbody`
   background: transparent;
   text-align: left;
   display: block;
-  overflow-y: ${({ scroll }) => scroll && "auto"};
-  height: ${({ height }) => height || "200px"};
   padding: ${({ padding }) => padding};
+  height: 100%;
 `;
+
 const TableContainer = styled.div`
-  overflow-x: scroll;
+  overflow-x: auto;
 `;
 
 const TableBodyItem = styled.td`
-  color: ${colors.darkGray};
+  color: ${({ color }) => color || colors.darkGray};
   width: ${(props) => props.width};
   border-bottom: ${(props) =>
     props.border ? `1px solid ${colors.gray}` : "none"};
   padding-bottom: ${(props) => props.border && "5px"};
   padding-right: ${({ pr }) => pr};
+  font-weight: ${({ weight }) => weight};
 `;
 
 const TableHeader = styled.thead`

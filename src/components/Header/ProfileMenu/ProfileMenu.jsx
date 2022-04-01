@@ -42,7 +42,7 @@ function ProfileMenu() {
       <UserName>
         Seja bem vindo(a), {name}
         <br />
-        Dono dos aptos: {uhs && uhs.toString()}
+        Proprietário(a) do(s) apto(s): {uhs && uhs.toString()}
       </UserName>
 
       {open && (

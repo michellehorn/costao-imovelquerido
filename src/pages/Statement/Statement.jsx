@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { api } from "../../services/api";
 import { colors, weight } from "../../theme";
 
@@ -17,6 +17,7 @@ import {
   Text,
 } from "../../styles";
 import { Select } from "../../components";
+import UserContext from "../../context/UserContext";
 
 function Statement() {
   const token = localStorage.getItem("token");
@@ -24,17 +25,21 @@ function Statement() {
   const [monthYear, setMonthYear] = useState("122021");
   const [uhs, setUhs] = useState(0);
   const [uhSetted, setUhSetted] = useState("0");
+  const { setState } = useContext(UserContext);
 
   const date = new Date();
   const month =
-    date.getMonth().length > 1 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`;
-  const my = `${month}/${date.getFullYear()}`;
+    date.getMonth().length > 1 ? date.getMonth() : `0${date.getMonth()}`;
+  const my = `${date.getFullYear()}-${month}`;
 
   const formattedValue = (value) => value.replace(/[^0-9]/g, "");
 
   const fetchDocs = (token, my, uh) => {
+    const y = my.slice(0, 4);
+    let m = my.slice(5, 7);
+    m = m.length > 1 ? m : `0${m}`;
     api
-      .get(`/uh/${uh}/extrato?mesano=${my}`, {
+      .get(`/uh/${uh}/extrato?mesano=${m}${y}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -62,17 +67,27 @@ function Statement() {
   useEffect(() => {
     fetchUhs(token);
     setMonthYear(formattedValue(my));
-  }, [token, my]);
+    setState({
+      breadcrumb: [
+        {
+          text: "Home",
+          link: "/",
+        },
+        { text: "Locação", link: "/loc" },
+        { text: "Extrato de Locação" },
+      ],
+    });
+  }, [token, my, setState]);
 
   useEffect(() => {
     fetchDocs(token, monthYear, uhSetted);
   }, [token, monthYear, uhSetted, my]);
 
   const convertToReal = (value) => `R$${Number(value).toFixed(2)}`;
-  const convertCredDeb = (value) => (value === "C" ? "Crédito" : "Débito");
 
   const handleInputDateChange = (e) => {
     const { value } = e.target;
+
     const newV = formattedValue(value);
 
     if (newV.length === 6) {
@@ -94,9 +109,10 @@ function Statement() {
             <Input
               onChange={(e) => handleInputDateChange(e)}
               placeholder={`Ex: ${my}`}
-              width="100px"
+              width="250px"
               color={colors.primary}
               defaultValue={my}
+              type="month"
             />
           </div>
           <div>
@@ -117,7 +133,6 @@ function Statement() {
                   <TableHeaderItem width="120px">Data</TableHeaderItem>
                   <TableHeaderItem width="400px">Historico</TableHeaderItem>
                   <TableHeaderItem width="100px">Valor</TableHeaderItem>
-                  <TableHeaderItem pr="30px">Cred/Deb</TableHeaderItem>
                 </TableRow>
               </TableHeader>
               <TableBody height="170px" scroll>
@@ -147,16 +162,14 @@ function Statement() {
                     <TableBodyItem
                       width="100px"
                       border
+                      weight="500"
                       key={`body-${itemB.Valor}-xx`}
+                      color={
+                        itemB.CredDeb === "C" ? colors.red : colors.primary
+                      }
                     >
+                      {itemB.CredDeb === "C" && "-"}
                       {convertToReal(itemB.Valor)}
-                    </TableBodyItem>
-                    <TableBodyItem
-                      pr="10px"
-                      border
-                      key={`body-${itemB.CredDeb}-xx`}
-                    >
-                      {convertCredDeb(itemB.CredDeb)}
                     </TableBodyItem>
                   </TableRow>
                 ))}

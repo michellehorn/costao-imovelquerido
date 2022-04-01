@@ -1,18 +1,22 @@
 import { WarningIcon } from "./styles";
 import {
   Aligner,
+  Link,
   Table,
   TableBody,
   TableBodyItem,
   TableRow,
   Text,
 } from "../../styles";
+import { Modal } from "../../components";
 import { colors, fontSize, weight } from "../../theme";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 const Announcements = () => {
   const [data, setData] = useState(null);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState("");
   const token = localStorage.getItem("token");
 
   const fetchAlerts = (token) => {
@@ -62,13 +66,28 @@ const Announcements = () => {
                     {itemB.Titulo}
                   </TableBodyItem>
                   <TableBodyItem width="200px" border key={`body-${indB}-a`}>
-                    {itemB.Aviso}
+                    <Link
+                      onClick={() => {
+                        setModalOpen(true);
+                        setModalData({
+                          title: itemB.Titulo,
+                          text: itemB.Aviso,
+                        });
+                      }}
+                    >
+                      Abrir aviso
+                    </Link>
                   </TableBodyItem>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         )}
+        <Modal
+          closeModal={setModalOpen}
+          data={modalData}
+          isOpen={isModalOpen}
+        />
       </Aligner>
     </>
   );

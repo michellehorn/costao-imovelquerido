@@ -3,7 +3,7 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import { Container } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { Loading } from "../../components";
+import { Breadcrumb, Loading } from "../../components";
 import UserContext from "../../context/UserContext";
 
 const LoggedLayout = ({ title, children }) => {
@@ -28,7 +28,10 @@ const LoggedLayout = ({ title, children }) => {
         toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
       />
       <Header logged onMenuClick={() => setSidebarOpen(!isSidebarOpen)} />
-      <Container>{children}</Container>
+      <Container>
+        <Breadcrumb items={state.breadcrumb} />
+        {children}
+      </Container>
     </>
   );
 };

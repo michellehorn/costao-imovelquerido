@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { api } from "../../services/api";
 import { colors, weight } from "../../theme";
 
@@ -14,10 +14,12 @@ import {
   TableHeaderItem,
   TableRow,
 } from "../../styles";
+import UserContext from "../../context/UserContext";
 
 function GenerateBill() {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("token");
+  const { setState } = useContext(UserContext);
 
   const downloadFile = (file) => {
     window.open(file);
@@ -36,6 +38,16 @@ function GenerateBill() {
 
   useEffect(() => {
     fetchDocs(token);
+    setState({
+      breadcrumb: [
+        {
+          text: "Home",
+          link: "/",
+        },
+        { text: "Condomínio", link: "/cond" },
+        { text: "Emitir 2ª via de boleto" },
+      ],
+    });
   }, [token]);
 
   return (
@@ -50,9 +62,15 @@ function GenerateBill() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHeaderItem width="130px">Criado em</TableHeaderItem>
-                <TableHeaderItem width="400px">Descrição</TableHeaderItem>
-                <TableHeaderItem width="100px">Status</TableHeaderItem>
+                <TableHeaderItem width="130px" mWidth="85px">
+                  Criado em
+                </TableHeaderItem>
+                <TableHeaderItem width="400px" mWidth="130px">
+                  Descrição
+                </TableHeaderItem>
+                <TableHeaderItem width="100px" mWidth="50px">
+                  Status
+                </TableHeaderItem>
                 <TableHeaderItem> </TableHeaderItem>
               </TableRow>
             </TableHeader>
@@ -66,7 +84,7 @@ function GenerateBill() {
                     {itemB.nome}
                   </TableBodyItem>
                   <TableBodyItem width="100px" border key={`body-${indB}-m`}>
-                    {itemB.aberto ? 'Aberto' : 'Pago'}
+                    {itemB.aberto ? "Aberto" : "Pago"}
                   </TableBodyItem>
                   <TableBodyItem pr="10px" border key={`body-${indB}-m`}>
                     <LinkItem

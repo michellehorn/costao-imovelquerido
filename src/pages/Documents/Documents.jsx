@@ -29,7 +29,7 @@ function Documents({ type }) {
   };
 
   const handleTitle = (type) =>
-    ({ C: "Condominiais", L: "de Locação" }[type] || "");
+    ({ C: "do Condomínio", L: "de Locação" }[type] || "");
 
   const fetchDocs = (type, token) => {
     api
@@ -45,6 +45,29 @@ function Documents({ type }) {
 
   useEffect(() => {
     fetchDocs(type, token);
+    if (type === "C") {
+      setState({
+        breadcrumb: [
+          {
+            text: "Home",
+            link: "/",
+          },
+          { text: "Condomínio", link: "/cond" },
+          { text: "Documentos do Condomínio" },
+        ],
+      });
+    } else {
+      setState({
+        breadcrumb: [
+          {
+            text: "Home",
+            link: "/",
+          },
+          { text: "Locação", link: "/loc" },
+          { text: "Documentos de Locação" },
+        ],
+      });
+    }
   }, [type, token]);
 
   return (

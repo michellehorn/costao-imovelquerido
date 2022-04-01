@@ -70,15 +70,21 @@ function App() {
             path="/cond"
             element={
               <LoggedLayout title="Condominio">
-                <MidLevelPage backLink="/" items={midLevelItems[1].items} />
+                <MidLevelPage
+                  backLink="/"
+                  text="Condomínio"
+                  items={midLevelItems[1].items}
+                />
               </LoggedLayout>
             }
           />
           <Route
             path="/loc"
             element={
-              <LoggedLayout backLink="/" title="Locação">
-                <MidLevelPage items={midLevelItems[2].items} />
+              <LoggedLayout title="Locação">
+                <MidLevelPage 
+                  text="Locação"
+                  backLink="/" items={midLevelItems[2].items} />
               </LoggedLayout>
             }
           />
@@ -126,7 +132,7 @@ function App() {
           <Route
             path="/cond-docs"
             element={
-              <LoggedLayout title="Documentos condominais">
+              <LoggedLayout title="Documentos do condomínio">
                 <Documents type="C" />
               </LoggedLayout>
             }
