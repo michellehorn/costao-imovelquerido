@@ -48,7 +48,7 @@ function GenerateBill() {
         { text: "Emitir 2ª via de boleto" },
       ],
     });
-  }, [token]);
+  }, [token, setState]);
 
   return (
     <FlexItem margin="auto" isFlex width="800px">

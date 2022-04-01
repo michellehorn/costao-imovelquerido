@@ -68,7 +68,7 @@ function Documents({ type }) {
         ],
       });
     }
-  }, [type, token]);
+  }, [type, token, setState]);
 
   return (
     <>

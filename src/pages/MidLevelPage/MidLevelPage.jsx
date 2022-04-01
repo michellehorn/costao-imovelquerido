@@ -20,7 +20,7 @@ function MidLevelPage({ backLink, items, text }) {
           { text: text },
         ],
       });
-  }, [items]);
+  }, [items, setState, backLink, text]);
 
   return (
     <>
