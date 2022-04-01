@@ -15,6 +15,7 @@ import {
   TableHeaderItem,
   TableRow,
   Text,
+  TextItem,
 } from "../../styles";
 import { Select } from "../../components";
 import UserContext from "../../context/UserContext";
@@ -83,7 +84,11 @@ function Statement() {
     fetchDocs(token, monthYear, uhSetted);
   }, [token, monthYear, uhSetted, my]);
 
-  const convertToReal = (value) => `R$${Number(value).toFixed(2)}`;
+  const isNeg = (value) => {
+    const hasSign = value.indexOf("-");
+    if (hasSign === 0) return true;
+    return false;
+  };
 
   const handleInputDateChange = (e) => {
     const { value } = e.target;
@@ -100,7 +105,7 @@ function Statement() {
   };
 
   return (
-    <FlexItem margin="0px auto 30px" isFlex width="800px">
+    <FlexItem margin="0px auto 30px" isFlex width="fit-content">
       <Aligner direction="center">
         <SectionTitle>Extrato de locação</SectionTitle>
         <FlexItem flex>
@@ -130,45 +135,49 @@ function Statement() {
               <TableHeader>
                 <TableRow>
                   <TableHeaderItem width="85px">Apto</TableHeaderItem>
-                  <TableHeaderItem width="120px">Data</TableHeaderItem>
-                  <TableHeaderItem width="400px">Historico</TableHeaderItem>
-                  <TableHeaderItem width="100px">Valor</TableHeaderItem>
+                  <TableHeaderItem width="400px">Data</TableHeaderItem>
+                  <TableHeaderItem width="200px">Valor</TableHeaderItem>
                 </TableRow>
               </TableHeader>
-              <TableBody height="170px" scroll>
-                {data.map((itemB, indB) => (
+              <TableBody height="170px">
+                {data?.map((itemB, indB) => (
                   <TableRow key={`row-${indB}`}>
                     <TableBodyItem
-                      width="65px"
+                      width="85px"
                       border
                       key={`body-${itemB.Apto}-${indB}`}
                     >
-                      {itemB.Apto}
-                    </TableBodyItem>
-                    <TableBodyItem
-                      width="120px"
-                      border
-                      key={`body-${itemB.Data}-xx`}
-                    >
-                      {itemB.Data}
+                      <h4>{itemB.Apto}</h4>
                     </TableBodyItem>
                     <TableBodyItem
                       width="400px"
                       border
-                      key={`body-${itemB.Historico}-xx`}
+                      key={`body-${itemB.Data}-xx`}
                     >
-                      {itemB.Historico}
+                      <TextItem>{itemB.Data}</TextItem>
+                      <TextItem>{itemB.Historico}</TextItem>
                     </TableBodyItem>
+
                     <TableBodyItem
-                      width="100px"
+                      width="200px"
                       border
                       weight="500"
                       key={`body-${itemB.Valor}-xx`}
-                      color={
-                        itemB.CredDeb === "D" ? colors.red : colors.primary
-                      }
                     >
-                      {convertToReal(itemB.Valor)}
+                      <TextItem
+                        color={
+                          isNeg(itemB.Valor) ? colors.red : colors.primary
+                        }
+                      >
+                        {itemB.Valor ? `R$${itemB.Valor}` : "ㅤ"}
+                      </TextItem>
+                      <TextItem
+                        color={
+                          isNeg(itemB.Saldo)  ? colors.red : colors.primary
+                        }
+                      >
+                        <b> Saldo: </b> R${itemB.Saldo}
+                      </TextItem>
                     </TableBodyItem>
                   </TableRow>
                 ))}

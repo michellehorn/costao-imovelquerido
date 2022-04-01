@@ -183,6 +183,10 @@ const TableBodyItem = styled.td`
   padding-bottom: ${(props) => props.border && "5px"};
   padding-right: ${({ pr }) => pr};
   font-weight: ${({ weight }) => weight};
+
+  &:last-of-type {
+    padding-left: .5em;
+  }
 `;
 
 const TableHeader = styled.thead`
@@ -224,6 +228,11 @@ const Text = styled.label`
   }
 `;
 
+const TextItem = styled.h5`
+  color: ${({ color }) => color};
+  font-weight: ${weight.medium};
+`;
+
 const Title = styled.h1`
   color: ${(props) => props.color};
   font-size: ${fontSize.title};
@@ -258,5 +267,6 @@ export {
   TableHeaderItem,
   TableRow,
   Text,
+  TextItem,
   Title,
 };
