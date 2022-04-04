@@ -14,19 +14,23 @@ import {
   TableHeaderItem,
   TableRow,
 } from "../../styles";
+import { fetchFile } from "../../services/download-file";
 import UserContext from "../../context/UserContext";
 
 function GenerateBill() {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("token");
-  const { setState } = useContext(UserContext);
+  const { state, setState } = useContext(UserContext);
 
-  const downloadFile = (file) => {
-    window.open(file);
+  const downloadFile = async (fileId, fileName) => {
+    setState({ ...state, loading: true });
+    await fetchFile(fileId, fileName);
+    setState({ ...state, loading: false });
   };
+
   const fetchDocs = (token) => {
     api
-      .get(`/documento/C`, {
+      .get(`/documento/B`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
