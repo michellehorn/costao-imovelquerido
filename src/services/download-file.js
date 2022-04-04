@@ -2,9 +2,9 @@ import { api } from "./api";
 
 const token = localStorage.getItem("token");
 
-async function fetchFile(id, fileName) {
+async function fetchFile(type, id, fileName) {
   await api
-    .get(`download/${id}`, {
+    .get(`download/${type}/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

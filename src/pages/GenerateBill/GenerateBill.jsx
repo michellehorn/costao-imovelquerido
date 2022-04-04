@@ -24,7 +24,7 @@ function GenerateBill() {
 
   const downloadFile = async (fileId, fileName) => {
     setState({ ...state, loading: true });
-    await fetchFile(fileId, fileName);
+    await fetchFile("documento", fileId, fileName);
     setState({ ...state, loading: false });
   };
 
