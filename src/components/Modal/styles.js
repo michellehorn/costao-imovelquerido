@@ -8,6 +8,12 @@ const ModalContainer = styled.div`
   margin: auto;
   display: flex;
   top: 0%;
+
+  #img-section {
+    img { 
+      object-fit: contain;
+    }
+  }
 `;
 
 const ModalBody = styled.div`

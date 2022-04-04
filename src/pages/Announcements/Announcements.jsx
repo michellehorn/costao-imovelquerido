@@ -70,8 +70,10 @@ const Announcements = () => {
                       onClick={() => {
                         setModalOpen(true);
                         setModalData({
+                          id: itemB.id,
                           title: itemB.Titulo,
                           text: itemB.Aviso,
+                          arquivo: itemB.arquivo,
                         });
                       }}
                     >
