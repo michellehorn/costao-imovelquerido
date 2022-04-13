@@ -31,6 +31,7 @@ const LoggedLayout = ({ title, children }) => {
         });
     };
     token && fetchAlerts(token)
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
