@@ -13,13 +13,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       ],
     },
     {
-      section: "Locação",
+      section: "Pool",
       subitems: [
         { text: "Extrato de locação", link: "/statement" },
         { text: "Documentos", link: "/loc-docs" },
       ],
     },
   ];
+
   return (
     <>
       <SidebarContainer sidebarOpen={isOpen} onClick={() => toggleSidebar()} />

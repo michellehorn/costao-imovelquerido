@@ -9,7 +9,9 @@ function Modal({ closeModal, isOpen, data }) {
     await fetchFile("aviso", data.id, data.arquivo);
   };
 
-  downloadFile();
+  if (data.flg_arquivo) {
+    downloadFile();
+  }
 
   return (
     <ModalContainer>
@@ -17,7 +19,7 @@ function Modal({ closeModal, isOpen, data }) {
         <h3>{title}</h3>
         <h5>{text}</h5>
         <div id="img-section"></div>
-         <ButtonSubmit
+        <ButtonSubmit
           height="30px"
           padding="0 15px"
           onClick={() => closeModal(false)}

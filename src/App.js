@@ -15,8 +15,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import MidLevelPage from "./pages/MidLevelPage";
 
 import billImg from "./assets/bill.svg";
-import docCond from "./assets/doc_cond.svg";
-import docLoc from "./assets/doc_loc.svg";
+import docCond from "./assets/village-svgrepo-com.svg";
+import docLoc from "./assets/Azul_Vertical.png";
 import docImage from "./assets/documents.svg";
 import statementImg from "./assets/statement.svg";
 
@@ -29,7 +29,7 @@ function App() {
       id: "home",
       items: [
         { src: docCond, link: "/cond", text: "Condomínio" },
-        { src: docLoc, link: "/loc", text: "Locação" },
+        { src: docLoc, link: "/loc", text: "Pool" },
       ],
     },
     {
@@ -81,10 +81,12 @@ function App() {
           <Route
             path="/loc"
             element={
-              <LoggedLayout title="Locação">
-                <MidLevelPage 
-                  text="Locação"
-                  backLink="/" items={midLevelItems[2].items} />
+              <LoggedLayout title="Pool">
+                <MidLevelPage
+                  text="Pool"
+                  backLink="/"
+                  items={midLevelItems[2].items}
+                />
               </LoggedLayout>
             }
           />
@@ -124,7 +126,7 @@ function App() {
           <Route
             path="/loc-docs"
             element={
-              <LoggedLayout title="Documentos de locação">
+              <LoggedLayout title="Documentos de pool">
                 <Documents type="L" />
               </LoggedLayout>
             }

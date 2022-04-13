@@ -5,6 +5,7 @@ import { Container } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { Breadcrumb, Loading } from "../../components";
 import UserContext from "../../context/UserContext";
+import { api } from "../../services/api";
 
 const LoggedLayout = ({ title, children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -13,6 +14,25 @@ const LoggedLayout = ({ title, children }) => {
   const token = localStorage.getItem("token");
 
   document.title = `Portal do Proprietário | ${title}`;
+
+  useEffect(() => {
+    const fetchAlerts = () => {
+      api
+        .get(`/aviso`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .catch((err) => {
+          if (err.message === "Request failed with status code 401") {
+            localStorage.removeItem('token')
+            navigate('/')
+          }
+        });
+    };
+    token && fetchAlerts(token)
+  }, []);
+
   useEffect(() => {
     if (!token) {
       navigate("/login");

@@ -99,7 +99,7 @@ function GenerateBill() {
                       pt="0"
                       flex
                     >
-                      Imprimir
+                      Visualizar
                     </LinkItem>
                   </TableBodyItem>
                 </TableRow>

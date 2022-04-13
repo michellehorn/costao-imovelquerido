@@ -10,6 +10,8 @@
 
 # production
 /build
+/public/Inicio_files
+/public/Inicio.html
 
 # misc
 .DS_Store

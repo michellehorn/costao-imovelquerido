@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     html {
       margin: 0!important;
       padding: 0!important;
+      -webkit-print-color-adjust: exact;
     }
     body {
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap');

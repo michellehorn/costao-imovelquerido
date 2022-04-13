@@ -27,6 +27,7 @@ const Announcements = () => {
         },
       })
       .then((res) => {
+        console.log(res);
         setData(res.data);
       });
   };
@@ -74,6 +75,7 @@ const Announcements = () => {
                           title: itemB.Titulo,
                           text: itemB.Aviso,
                           arquivo: itemB.arquivo,
+                          flg_arquivo: itemB.flg_arquivo,
                         });
                       }}
                     >

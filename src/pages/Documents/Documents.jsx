@@ -29,7 +29,7 @@ function Documents({ type }) {
   };
 
   const handleTitle = (type) =>
-    ({ C: "do Condomínio", L: "de Locação" }[type] || "");
+    ({ C: "do Condomínio", L: "de Pool" }[type] || "");
 
   const fetchDocs = (type, token) => {
     api
@@ -63,8 +63,8 @@ function Documents({ type }) {
             text: "Home",
             link: "/",
           },
-          { text: "Locação", link: "/loc" },
-          { text: "Documentos de Locação" },
+          { text: "Pool", link: "/loc" },
+          { text: "Documentos de Pool" },
         ],
       });
     }
@@ -117,7 +117,7 @@ function Documents({ type }) {
                         pt="0"
                         flex
                       >
-                        Imprimir
+                        Visualizar
                       </LinkItem>
                     </TableBodyItem>
                   </TableRow>

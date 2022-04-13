@@ -74,7 +74,7 @@ function Statement() {
           text: "Home",
           link: "/",
         },
-        { text: "Locação", link: "/loc" },
+        { text: "Pool", link: "/loc" },
         { text: "Extrato de Locação" },
       ],
     });
