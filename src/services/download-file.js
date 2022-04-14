@@ -1,8 +1,6 @@
 import { api } from "./api";
 
-const token = localStorage.getItem("token");
-
-async function fetchFile(type, id, fileName) {
+async function fetchFile(type, id, fileName, token) {
   await api
     .get(`download/${type}/${id}`, {
       headers: {

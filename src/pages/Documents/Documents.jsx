@@ -22,9 +22,9 @@ function Documents({ type }) {
   const token = localStorage.getItem("token");
   const { state, setState } = useContext(UserContext);
 
-  const downloadFile = async (fileId, fileName) => {
+  const downloadFile = async (fileId, fileName, tokenI) => {
     setState({ ...state, loading: true });
-    await fetchFile("documento", fileId, fileName);
+    await fetchFile("documento", fileId, fileName, tokenI);
     setState({ ...state, loading: false });
   };
 
@@ -111,7 +111,7 @@ function Documents({ type }) {
                     </TableBodyItem>
                     <TableBodyItem border key={`body-${itemB.id}-m`} pr="10px">
                       <LinkItem
-                        onClick={() => downloadFile(itemB.id, itemB.arquivo)}
+                        onClick={() => token && downloadFile(itemB.id, itemB.arquivo, token)}
                         hasCursor
                         color={colors.primary}
                         pt="0"
