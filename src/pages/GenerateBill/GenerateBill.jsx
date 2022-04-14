@@ -22,9 +22,9 @@ function GenerateBill() {
   const token = localStorage.getItem("token");
   const { state, setState } = useContext(UserContext);
 
-  const downloadFile = async (fileId, fileName) => {
+  const downloadFile = async (fileId, fileName, tokenI) => {
     setState({ ...state, loading: true });
-    await fetchFile("documento", fileId, fileName);
+    await fetchFile("documento", fileId, fileName, tokenI);
     setState({ ...state, loading: false });
   };
 
@@ -92,7 +92,7 @@ function GenerateBill() {
                   </TableBodyItem>
                   <TableBodyItem pr="10px" border key={`body-${indB}-m`}>
                     <LinkItem
-                      onClick={() => downloadFile(itemB.id, itemB.arquivo)}
+                      onClick={() => token && downloadFile(itemB.id, itemB.arquivo, token)}
                       hasCursor
                       pr="10px"
                       color={colors.primary}

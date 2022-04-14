@@ -37,8 +37,7 @@ function Statement() {
 
   const fetchDocs = (token, my, uh) => {
     const y = my.slice(0, 4);
-    let m = my.slice(5, 7);
-    m = m.length > 1 ? m : `0${m}`;
+    let m = my.slice(4, 7);
     api
       .get(`/uh/${uh}/extrato?mesano=${m}${y}`, {
         headers: {
