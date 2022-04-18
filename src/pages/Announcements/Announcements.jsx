@@ -76,6 +76,7 @@ const Announcements = () => {
                           text: itemB.Aviso,
                           arquivo: itemB.arquivo,
                           flg_arquivo: itemB.flg_arquivo,
+                          token: token
                         });
                       }}
                     >

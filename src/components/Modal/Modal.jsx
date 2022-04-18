@@ -3,14 +3,14 @@ import { ModalBody, ModalContainer } from "./styles";
 import { fetchFile } from "../../services/download-file";
 
 function Modal({ closeModal, isOpen, data }) {
-  const { title, text } = data;
+  const { title, text, token } = data;
   if (!isOpen) return null;
   const downloadFile = async () => {
-    await fetchFile("aviso", data.id, data.arquivo);
+    await fetchFile("aviso", data.id, data.arquivo, token);
   };
 
   if (data.flg_arquivo) {
-    downloadFile();
+    token && downloadFile();
   }
 
   return (
