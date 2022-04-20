@@ -14,7 +14,7 @@ function Modal({ closeModal, isOpen, data }) {
   }
 
   return (
-    <ModalContainer>
+    <ModalContainer onClick={() => closeModal(false)}>
       <ModalBody>
         <h3>{title}</h3>
         <h5>{text}</h5>

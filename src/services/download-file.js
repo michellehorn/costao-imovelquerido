@@ -21,8 +21,9 @@ async function fetchFile(type, id, fileName, token) {
         let image = document.createElement("img");
         image.src = data;
         image.alt = fileName;
-        image.style.width = '300px';
-        image.style.height = '270px';
+        image.style.width = '100%';
+        image.style.height = 'fit-content';
+        image.style.backgroundRepeat = 'no-repeat';
         let div = document.getElementById("img-section");
         div.appendChild(image);
       }
