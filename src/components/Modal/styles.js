@@ -11,14 +11,13 @@ const ModalContainer = styled.div`
 
   #img-section {
     position: relative;
-    height: fit-content;
+    height: 100%;
     img {
       object-fit: contain;
       background-repeat: no-repeat;
     }
     @media (min-width: 1024px) {
       img {
-        max-height: 100vh;
         height: fit-content;
         width: 100%;
       }

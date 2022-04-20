@@ -22,7 +22,7 @@ async function fetchFile(type, id, fileName, token) {
         image.src = data;
         image.alt = fileName;
         image.style.width = '100%';
-        image.style.height = 'fit-content';
+        image.style.height = '100%';
         image.style.backgroundRepeat = 'no-repeat';
         let div = document.getElementById("img-section");
         div.appendChild(image);
