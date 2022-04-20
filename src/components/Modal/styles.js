@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../theme";
 
 const ModalContainer = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   position: absolute;
   margin: auto;
@@ -17,7 +17,6 @@ const ModalContainer = styled.div`
     }
     @media (min-width: 1024px) {
       img {
-        max-height: 800px;
         width: 100%;
       }
     }
