@@ -72,6 +72,9 @@ function GenerateBill() {
                 <TableHeaderItem width="400px" mWidth="130px">
                   Descrição
                 </TableHeaderItem>
+                <TableHeaderItem width="100px" mWidth="50px">
+                  UH
+                </TableHeaderItem>
                 <TableHeaderItem> </TableHeaderItem>
               </TableRow>
             </TableHeader>
@@ -84,10 +87,15 @@ function GenerateBill() {
                   <TableBodyItem width="400px" border key={`body-${indB}-m`}>
                     {itemB.nome}
                   </TableBodyItem>
-                 
+                  <TableBodyItem width="100px" border key={`body-${indB}-m`}>
+                    {itemB.uh}
+                  </TableBodyItem>
+
                   <TableBodyItem pr="10px" border key={`body-${indB}-m`}>
                     <LinkItem
-                      onClick={() => token && downloadFile(itemB.id, itemB.arquivo, token)}
+                      onClick={() =>
+                        token && downloadFile(itemB.id, itemB.arquivo, token)
+                      }
                       hasCursor
                       pr="10px"
                       color={colors.primary}
