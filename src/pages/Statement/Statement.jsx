@@ -23,6 +23,7 @@ import UserContext from "../../context/UserContext";
 function Statement() {
   const token = localStorage.getItem("token");
   const [data, setData] = useState(null);
+  const [message, setMessage] = useState();
   const [monthYear, setMonthYear] = useState("122021");
   const [uhs, setUhs] = useState(0);
   const [uhSetted, setUhSetted] = useState("0");
@@ -45,7 +46,13 @@ function Statement() {
         },
       })
       .then((res) => {
-        setData(res.data);
+        if (typeof res.data === "string") {
+          setMessage(res.data);
+          setData(null);
+        } else {
+          setMessage(null)
+          setData(res.data);
+        }
       })
       .catch(() => {
         setData(null);
@@ -124,56 +131,65 @@ function Statement() {
             <Select onChange={handleUhChange} items={uhs} />
           </div>
         </FlexItem>
-        {!data ? (
+        {message && (
+          <SectionTitle mt="40px" weight={weight.light} color={colors.primary}>
+            {message}.
+          </SectionTitle>
+        )}
+        {!data && !message ? (
           <SectionTitle mt="40px" weight={weight.light} color={colors.primary}>
             Não existem documentos para serem mostrados.
           </SectionTitle>
         ) : (
-          <TableContainer>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderItem width="85px">Apto</TableHeaderItem>
-                  <TableHeaderItem width="400px">Data</TableHeaderItem>
-                  <TableHeaderItem width="fit-content">Valor</TableHeaderItem>
-                </TableRow>
-              </TableHeader>
-              <TableBody height="170px">
-                {data?.map((itemB, indB) => (
-                  <TableRow key={`row-${indB}`}>
-                    <TableBodyItem
-                      width="85px"
-                      border
-                      key={`body-${itemB.Apto}-${indB}`}
-                    >
-                      <h4>{itemB.Apto}</h4>
-                    </TableBodyItem>
-                    <TableBodyItem
-                      width="400px"
-                      border
-                      key={`body-${itemB.Data}-xx`}
-                    >
-                      <TextItem>{itemB.Data}</TextItem>
-                      <TextItem>{itemB.Historico}</TextItem>
-                    </TableBodyItem>
-
-                    <TableBodyItem
-                      width="fit-content"
-                      border
-                      weight="500"
-                      key={`body-${itemB.Valor}-xx`}
-                    >
-                      <TextItem
-                        color={isNeg(itemB.Valor) ? colors.red : colors.primary}
-                      >
-                        {itemB.Valor ? `R$ ${itemB.Valor}` : "ㅤ"}
-                      </TextItem>
-                    </TableBodyItem>
+          !message && (
+            <TableContainer>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderItem width="85px">Apto</TableHeaderItem>
+                    <TableHeaderItem width="400px">Data</TableHeaderItem>
+                    <TableHeaderItem width="fit-content">Valor</TableHeaderItem>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHeader>
+                <TableBody height="170px">
+                  {data?.map((itemB, indB) => (
+                    <TableRow key={`row-${indB}`}>
+                      <TableBodyItem
+                        width="85px"
+                        border
+                        key={`body-${itemB.Apto}-${indB}`}
+                      >
+                        <h4>{itemB.Apto}</h4>
+                      </TableBodyItem>
+                      <TableBodyItem
+                        width="400px"
+                        border
+                        key={`body-${itemB.Data}-xx`}
+                      >
+                        <TextItem>{itemB.Data}</TextItem>
+                        <TextItem>{itemB.Historico}</TextItem>
+                      </TableBodyItem>
+
+                      <TableBodyItem
+                        width="fit-content"
+                        border
+                        weight="500"
+                        key={`body-${itemB.Valor}-xx`}
+                      >
+                        <TextItem
+                          color={
+                            isNeg(itemB.Valor) ? colors.red : colors.primary
+                          }
+                        >
+                          {itemB.Valor ? `R$ ${itemB.Valor}` : "ㅤ"}
+                        </TextItem>
+                      </TableBodyItem>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          )
         )}
       </Aligner>
     </FlexItem>
