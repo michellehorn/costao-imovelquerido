@@ -85,7 +85,7 @@ function Statement() {
         { text: "Extrato de Locação" },
       ],
     });
-  }, [token, my, state, setState]);
+  }, [token, my]);
 
   useEffect(() => {
     fetchDocs(token, monthYear, uhSetted);
