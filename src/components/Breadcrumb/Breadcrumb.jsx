@@ -9,8 +9,8 @@ function Breadcrumb({ items }) {
 
   return (
     <FlexItem flex>
-      {items.map((item) => (
-        <>
+      {items.map((item, index) => (
+        <div key={`breadcrumb-${index}`}>
           <Link
             decoration={item.link ? "underline" : "none"}
             noCursor={!item.link}
@@ -21,7 +21,7 @@ function Breadcrumb({ items }) {
             {item.text}
           </Link>
           <Chevron />
-        </>
+        </div>
       ))}
     </FlexItem>
   );

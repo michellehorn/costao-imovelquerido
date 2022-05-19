@@ -36,8 +36,8 @@ function MidLevelPage({ backLink, items, text }) {
         minHeight="300px"
         jFlex
       >
-        {items.map((item) => (
-          <FlexItem padding="0 2em" tAlign="center">
+        {items.map((item, index) => (
+          <FlexItem key={index} padding="0 2em" tAlign="center">
             <ImgRender
               key={item.link}
               alt={item.link}

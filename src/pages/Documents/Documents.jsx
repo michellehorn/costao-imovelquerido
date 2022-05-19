@@ -70,7 +70,7 @@ function Documents({ type }) {
         ],
       });
     }
-  }, [type, token, state, setState]);
+  }, [type, token]);
 
   return (
     <>

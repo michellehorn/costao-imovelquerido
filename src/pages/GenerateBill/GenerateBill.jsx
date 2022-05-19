@@ -53,7 +53,7 @@ function GenerateBill() {
         { text: "Emitir 2ª via de boleto" },
       ],
     });
-  }, [token, setState]);
+  }, [token]);
 
   return (
     <FlexItem margin="auto" isFlex width="800px">
@@ -67,13 +67,13 @@ function GenerateBill() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHeaderItem width="130px" mWidth="85px">
+                <TableHeaderItem width="130px" mWidth="85px" key={`header-m-1`}>
                   Criado em
                 </TableHeaderItem>
-                <TableHeaderItem width="400px" mWidth="130px">
+                <TableHeaderItem width="400px" mWidth="130px" key={`header-m-2`}>
                   Descrição
                 </TableHeaderItem>
-                <TableHeaderItem width="100px" mWidth="50px">
+                <TableHeaderItem width="100px" mWidth="50px" key={`header-m-3`}>
                   UH
                 </TableHeaderItem>
                 <TableHeaderItem> </TableHeaderItem>
@@ -81,18 +81,18 @@ function GenerateBill() {
             </TableHeader>
             <TableBody scroll>
               {data.map((itemB, indB) => (
-                <TableRow key={`row-${indB}`}>
-                  <TableBodyItem width="130px" border key={`body-${indB}-m`}>
+                <TableRow key={`row-gb-${indB}`}>
+                  <TableBodyItem width="130px" border key={`body-${indB}-m-1`}>
                     {itemB.data}
                   </TableBodyItem>
-                  <TableBodyItem width="400px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="400px" border key={`body-${indB}-m-2`}>
                     {itemB.nome}
                   </TableBodyItem>
-                  <TableBodyItem width="100px" border key={`body-${indB}-m`}>
+                  <TableBodyItem width="100px" border key={`body-${indB}-m-3`}>
                     {itemB.uh}
                   </TableBodyItem>
 
-                  <TableBodyItem pr="10px" border key={`body-${indB}-m`}>
+                  <TableBodyItem pr="10px" border key={`body-${indB}-m-4`}>
                     <LinkItem
                       onClick={() =>
                         token && downloadFile(itemB.id, itemB.arquivo, token)
