@@ -45,7 +45,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 <Link
                   decoration="none"
                   pl="5px"
-                  onClick={navigate(subItem.link)}
+                  onClick={() => navigate(subItem.link)}
                   key={`sub-${indSub}`}
                 >
                   {subItem.text}
