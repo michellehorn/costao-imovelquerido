@@ -1,9 +1,10 @@
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, useNavigate } from "react-router-dom";
 import { SidebarArea, SidebarContainer, SidebarItemsArea } from "./styles";
 import { DividerHorizontal, Link, LogoYellowBlue, Text } from "../../styles";
 import { colors, weight, fontSize } from "../../theme";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
+  const navigate = useNavigate()
   const items = [
     {
       section: "Condomínio",
@@ -44,7 +45,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 <Link
                   decoration="none"
                   pl="5px"
-                  href={subItem.link}
+                  onClick={navigate(subItem.link)}
                   key={`sub-${indSub}`}
                 >
                   {subItem.text}
