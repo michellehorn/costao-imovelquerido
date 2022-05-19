@@ -27,7 +27,6 @@ const Announcements = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         setData(res.data);
       });
   };

@@ -9,6 +9,7 @@ const DEFAULT_VALUE = {
     token: "",
     loading: false,
     breadcrumb: null,
+    flg_admin: false
   },
   setState: () => {},
 };

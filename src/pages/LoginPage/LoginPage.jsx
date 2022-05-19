@@ -12,14 +12,16 @@ import { Background, BackgroundCover } from "./styles";
 import { colors, weight } from "../../theme";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Alert } from "../../components";
+import UserContext from "../../context/UserContext";
 
 const LoginPage = ({ title }) => {
   const navigate = useNavigate();
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState();
   const [alertMessage, setAlertMessage] = useState("");
+  const { setState } = useContext(UserContext);
 
   document.title = `Portal do Proprietário | ${title}`;
 
@@ -44,7 +46,7 @@ const LoginPage = ({ title }) => {
         localStorage.setItem("just_logged", true);
         const { novaSenha } = res.data;
         localStorage.setItem("novaSenha", novaSenha);
-
+        setState({ flg_admin: res.data.flg_admin });
         setAlertType("success");
         setAlertOpen(true);
 
