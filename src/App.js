@@ -19,10 +19,16 @@ import docCond from "./assets/village-svgrepo-com.svg";
 import docLoc from "./assets/Azul_Vertical.png";
 import docImage from "./assets/documents.svg";
 import statementImg from "./assets/statement.svg";
+import { useEffect } from "react";
 
 function App() {
   const { state, setState } = useContext(UserContext);
   const novaSenha = localStorage.getItem("novaSenha");
+  const isAdmin = localStorage.getItem("flg_admin");
+  
+  useEffect(() => {
+    setState({ nova_senha: novaSenha, flg_admin: isAdmin });
+  }, [state]);
 
   const midLevelItems = [
     {

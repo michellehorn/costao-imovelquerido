@@ -32,7 +32,7 @@ const Home = ({ items }) => {
 
   useEffect(() => {
     setState({...state, breadcrumb: null });
-  }, [state, setState]);
+  }, []);
 
   return (
     <>

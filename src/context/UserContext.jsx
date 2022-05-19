@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const DEFAULT_VALUE = {
   state: {
@@ -9,7 +9,7 @@ const DEFAULT_VALUE = {
     token: "",
     loading: false,
     breadcrumb: null,
-    flg_admin: false
+    flg_admin: localStorage.getItem("flg_admin"),
   },
   setState: () => {},
 };

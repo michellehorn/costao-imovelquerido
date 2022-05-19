@@ -10,8 +10,9 @@ function MidLevelPage({ backLink, items, text }) {
   const { state, setState } = useContext(UserContext);
 
   useEffect(() => {
-    if (backLink)
-      setState({...state,
+    if (backLink) {
+      setState({
+        ...state,
         breadcrumb: [
           {
             text: "Home",
@@ -20,7 +21,9 @@ function MidLevelPage({ backLink, items, text }) {
           { text: text },
         ],
       });
-  }, [items, setState, state, backLink, text]);
+    }
+    // eslint-disable-next-line
+  }, [items, backLink, text]);
 
   return (
     <>

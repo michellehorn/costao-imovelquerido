@@ -46,7 +46,8 @@ function Documents({ type }) {
   useEffect(() => {
     fetchDocs(type, token);
     if (type === "C") {
-      setState({...state,
+      setState({
+        ...state,
         breadcrumb: [
           {
             text: "Home",
@@ -57,7 +58,8 @@ function Documents({ type }) {
         ],
       });
     } else {
-      setState({...state,
+      setState({
+        ...state,
         breadcrumb: [
           {
             text: "Home",
@@ -111,7 +113,9 @@ function Documents({ type }) {
                     </TableBodyItem>
                     <TableBodyItem border key={`body-${itemB.id}-m`} pr="10px">
                       <LinkItem
-                        onClick={() => token && downloadFile(itemB.id, itemB.arquivo, token)}
+                        onClick={() =>
+                          token && downloadFile(itemB.id, itemB.arquivo, token)
+                        }
                         hasCursor
                         color={colors.primary}
                         pt="0"

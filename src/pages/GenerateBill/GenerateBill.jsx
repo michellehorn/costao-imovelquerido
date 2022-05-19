@@ -43,6 +43,7 @@ function GenerateBill() {
   useEffect(() => {
     fetchDocs(token);
     setState({
+      ...state,
       breadcrumb: [
         {
           text: "Home",

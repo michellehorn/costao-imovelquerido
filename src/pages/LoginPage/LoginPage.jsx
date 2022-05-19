@@ -44,6 +44,7 @@ const LoginPage = ({ title }) => {
         localStorage.setItem("name", res.data.nome);
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("just_logged", true);
+        localStorage.setItem("is_admin", res.data.flg_admin);
         const { novaSenha } = res.data;
         localStorage.setItem("novaSenha", novaSenha);
         setState({ ...state, flg_admin: res.data.flg_admin });
