@@ -31,7 +31,6 @@ function ProfileMenu() {
     fetchUhs(token);
   }, [token]);
 
-
   const logout = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("token");
@@ -52,7 +51,9 @@ function ProfileMenu() {
 
       {open && (
         <Menu>
-          <MenuItem href="/change-password">Redefinir senha</MenuItem>
+          <MenuItem onClick={() => navigate("change-password")}>
+            Redefinir senha
+          </MenuItem>
           <MenuItem onClick={() => logout()}>Sair</MenuItem>
         </Menu>
       )}
