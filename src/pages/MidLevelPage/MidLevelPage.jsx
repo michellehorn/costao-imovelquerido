@@ -7,11 +7,11 @@ import { colors } from "../../theme";
 
 function MidLevelPage({ backLink, items, text }) {
   const navigate = useNavigate();
-  const { setState } = useContext(UserContext);
+  const { state, setState } = useContext(UserContext);
 
   useEffect(() => {
     if (backLink)
-      setState({
+      setState({...state,
         breadcrumb: [
           {
             text: "Home",
@@ -20,7 +20,7 @@ function MidLevelPage({ backLink, items, text }) {
           { text: text },
         ],
       });
-  }, [items, setState, backLink, text]);
+  }, [items, setState, state, backLink, text]);
 
   return (
     <>

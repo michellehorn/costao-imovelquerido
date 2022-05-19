@@ -46,7 +46,7 @@ function Documents({ type }) {
   useEffect(() => {
     fetchDocs(type, token);
     if (type === "C") {
-      setState({
+      setState({...state,
         breadcrumb: [
           {
             text: "Home",
@@ -57,7 +57,7 @@ function Documents({ type }) {
         ],
       });
     } else {
-      setState({
+      setState({...state,
         breadcrumb: [
           {
             text: "Home",
@@ -68,7 +68,7 @@ function Documents({ type }) {
         ],
       });
     }
-  }, [type, token, setState]);
+  }, [type, token, state, setState]);
 
   return (
     <>

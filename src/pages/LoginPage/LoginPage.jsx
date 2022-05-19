@@ -21,7 +21,7 @@ const LoginPage = ({ title }) => {
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState();
   const [alertMessage, setAlertMessage] = useState("");
-  const { setState } = useContext(UserContext);
+  const { state, setState } = useContext(UserContext);
 
   document.title = `Portal do Proprietário | ${title}`;
 
@@ -46,7 +46,7 @@ const LoginPage = ({ title }) => {
         localStorage.setItem("just_logged", true);
         const { novaSenha } = res.data;
         localStorage.setItem("novaSenha", novaSenha);
-        setState({ flg_admin: res.data.flg_admin });
+        setState({ ...state, flg_admin: res.data.flg_admin });
         setAlertType("success");
         setAlertOpen(true);
 

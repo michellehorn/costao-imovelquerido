@@ -27,7 +27,7 @@ function Statement() {
   const [monthYear, setMonthYear] = useState("122021");
   const [uhs, setUhs] = useState(0);
   const [uhSetted, setUhSetted] = useState("0");
-  const { setState } = useContext(UserContext);
+  const { state, setState } = useContext(UserContext);
 
   const date = new Date();
   const month =
@@ -50,7 +50,7 @@ function Statement() {
           setMessage(res.data);
           setData(null);
         } else {
-          setMessage(null)
+          setMessage(null);
           setData(res.data);
         }
       })
@@ -75,6 +75,7 @@ function Statement() {
     fetchUhs(token);
     setMonthYear(formattedValue(my));
     setState({
+      ...state,
       breadcrumb: [
         {
           text: "Home",
@@ -84,7 +85,7 @@ function Statement() {
         { text: "Extrato de Locação" },
       ],
     });
-  }, [token, my, setState]);
+  }, [token, my, state, setState]);
 
   useEffect(() => {
     fetchDocs(token, monthYear, uhSetted);

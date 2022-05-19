@@ -11,7 +11,7 @@ import UserContext from "../../context/UserContext";
 const Home = ({ items }) => {
   const name = localStorage.getItem("name");
   const justLogged = localStorage.getItem("just_logged");
-  const { setState } = useContext(UserContext);
+  const { state, setState } = useContext(UserContext);
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState();
   const [alertMessage, setAlertMessage] = useState("");
@@ -31,8 +31,8 @@ const Home = ({ items }) => {
   }, [justLogged]);
 
   useEffect(() => {
-    setState({ breadcrumb: null });
-  }, [setState]);
+    setState({...state, breadcrumb: null });
+  }, [state, setState]);
 
   return (
     <>

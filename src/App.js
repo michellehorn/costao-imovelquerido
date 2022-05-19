@@ -21,7 +21,7 @@ import docImage from "./assets/documents.svg";
 import statementImg from "./assets/statement.svg";
 
 function App() {
-  const { state } = useContext(UserContext);
+  const { state, setState } = useContext(UserContext);
   const novaSenha = localStorage.getItem("novaSenha");
 
   const midLevelItems = [
@@ -55,7 +55,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <UserContextProvider value={{ ...state }}>
+      <UserContextProvider value={{ state, setState }}>
         <Routes>
           <Route path="/login" element={<LoginPage title="Login " />} />
           <Route

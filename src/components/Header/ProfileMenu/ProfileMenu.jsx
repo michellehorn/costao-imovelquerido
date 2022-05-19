@@ -31,6 +31,7 @@ function ProfileMenu() {
     fetchUhs(token);
   }, [token]);
 
+
   const logout = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("token");
