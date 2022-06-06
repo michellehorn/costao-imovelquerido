@@ -38,6 +38,7 @@ function Statement() {
 
   const fetchDocs = (token, my, uh) => {
     const y = my.slice(0, 4);
+    setState({ ...state, loading: true });
     let m = my.slice(4, 7);
     api
       .get(`/uh/${uh}/extrato?mesano=${m}${y}`, {
@@ -46,16 +47,19 @@ function Statement() {
         },
       })
       .then((res) => {
+        setState({ ...state, loading: false });
         if (typeof res.data === "string") {
           setMessage(res.data);
           setData(null);
         } else {
           setMessage(null);
           setData(res.data);
+          setState({ ...state, loading: false });
         }
       })
       .catch(() => {
         setData(null);
+        setState({ ...state, loading: false });
       });
   };
 
