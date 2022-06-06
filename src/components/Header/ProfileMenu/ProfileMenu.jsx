@@ -1,9 +1,8 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { ProfileIcon } from "../styles";
 import { Menu, MenuItem, UserName } from "./styles";
 import { api } from "../../../services/api";
-import UserContext from "../../../context/UserContext";
 
 function ProfileMenu() {
   const [open, setOpen] = useState(false);
@@ -11,7 +10,7 @@ function ProfileMenu() {
   const [uhs, setUhs] = useState();
   const name = localStorage.getItem("name");
   const token = localStorage.getItem("token");
-  const { state } = useContext(UserContext);
+  const isAdmin = localStorage.getItem("is_admin");
 
   const fetchUhs = (token) => {
     api
@@ -44,7 +43,7 @@ function ProfileMenu() {
       <UserName>
         Seja bem vindo(a), {name}
         <br />
-        {state.flg_admin ? null : (
+        {isAdmin ? null : (
           <span>Proprietário(a) do(s) apto(s): {uhs && uhs.toString()}</span>
         )}
       </UserName>
