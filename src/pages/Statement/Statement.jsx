@@ -19,6 +19,8 @@ import {
 } from "../../styles";
 import { Select } from "../../components";
 import UserContext from "../../context/UserContext";
+import downloadImg from "../../assets/download.svg";
+import { downloadStatement } from "../../services/download-statement";
 
 function Statement() {
   const token = localStorage.getItem("token");
@@ -95,7 +97,7 @@ function Statement() {
     fetchDocs(token, monthYear, uhSetted);
   }, [token, monthYear, uhSetted, my]);
 
-  const isNeg = (value) => {
+   const isNeg = (value) => {
     const hasSign = value.indexOf("-");
     if (hasSign === 0) return true;
     return false;
@@ -135,6 +137,18 @@ function Statement() {
             <Text>Apto</Text>
             <Select onChange={handleUhChange} items={uhs} />
           </div>
+          <Aligner
+            direction="left"
+            style={{ marginTop: "4em", marginLeft: "2em" }}
+          >
+            <img
+              title="Download do extrato"
+              className="download-icon"
+              src={downloadImg}
+              alt="download icon"
+              onClick={() => downloadStatement(data, my)}
+            />
+          </Aligner>
         </FlexItem>
         {message && (
           <SectionTitle mt="40px" weight={weight.light} color={colors.primary}>
