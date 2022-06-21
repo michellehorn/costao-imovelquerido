@@ -25,12 +25,12 @@ const downloadStatement = (data, my) => {
   logoEl.setAttribute("src", logo);
 
   page.document.title = `Extrato de locação | Ref ${my}`;
-  page.document.write(`<body style="font-family: 'Montserrat', sans-serif";>`);
+  page.document.write(`<body style="font-family: 'Montserrat', sans-serif;" >`);
   page.document.write(
-    `<table style="width: 100%;background-color: transparent;border-spacing: 0 1em; padding: 3em"><thead style="text-align: left; width: 100%; color: #444;">`
+    `<table style="width: 100%;background-color: transparent;border-spacing: 0 1em; padding: 3em; max-width: 660px; margin: auto;"><thead style="text-align: left; width: 100%; color: #444;">`
   );
   //table header
-  page.document.write(`<tr style="width: 100px; margin-top: 40px;">`);
+  page.document.write(`<tr style="margin-top: 40px;">`);
   page.document.write(`<th style="width: 80px;">Apto</th>`);
   page.document.write(`<th style="width: 300px;">Data</th>`);
   page.document.write(

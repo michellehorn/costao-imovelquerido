@@ -139,7 +139,7 @@ function Statement() {
           </div>
           <Aligner
             direction="left"
-            style={{ marginTop: "4em", marginLeft: "2em" }}
+            style={{ marginTop: "4em", marginLeft: "3em" }}
           >
             <img
               title="Download do extrato"
